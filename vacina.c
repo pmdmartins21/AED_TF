@@ -1,6 +1,6 @@
 #include "vacina.h"
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
 Vacina criarVacina(){
     Vacina c;

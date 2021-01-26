@@ -28,16 +28,3 @@ typedef struct Utente{
     
     
 } CUtente;
-
-typedef struct sListaCentrosDeVacinacao
-{
-    CentroDeVacinacao centros[1000];
-    
-} ListaCentros;
-
-typedef struct sListaUtentes
-{
-    CUtente utentes[1000];
-
-} ListaUtentes;
-
