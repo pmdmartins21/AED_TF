@@ -1,0 +1,50 @@
+## bem vindo###
+
+
+escolha o centro de vacinaçao a que pertence: ///lista de centrosd e vacinacai
+
+1 centro1
+2
+3
+
+opcao: x
+"#####
+1 inserir novo utente
+2 segunda dose
+3 remover utente
+4 listar todos os utentes do SNS // olha a lista de utentes e vai buscar
+opcao 1
+
+introduza os dados do utente:
+numero de utente:
+nome morada
+...
+
+qual a vacina administrada // lista vacinas
+1
+2
+3
+opcao:
+////
+internamente 
+criar utente
+assciar-lhe a vacina e o centro de vacinacao // ou copia toda a estrutuda da vacina ou crirar um int id na vaciana
+struct utentes ->  {
+	int numeroUtente;
+	int vacinaID;
+	int centroID; 
+}
+
+ia ao utente, pegava na vacinaID e criava um metodo() {
+Vacina getVacinaById(Int vacinaID) {
+ 	vai à lista de vacinas e retorna a que tem a vacinaID; }
+Vacina getCentroById(Int CentroID) {
+ 	vai à lista de centros e retorna a que tem o centroID; }
+
+
+3 listas
+utentes
+vacinas
+centro vacinaçao
+sem ligaçao directa
+
