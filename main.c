@@ -41,8 +41,3 @@ typedef struct sListaUtentes
 
 } ListaUtentes;
 
-typedef struct sListaVacinas
-{
-    Vacina vacinas[10];
-
-} ListaVacinas;
