@@ -16,3 +16,33 @@ int main(int argc, char const *argv[])
     printf("===========MENU PRINCIPAL===========");
     return 0;
 }
+
+typedef struct Utente{
+    char nome[101];
+    int numeroDeUtente;
+    int idade;
+    int contactoTelefonico;
+    Vacina vacinaUtilizada;
+    int quantidadeDosesAdmn;
+    char dataUltimaDosagem[41];
+    
+    
+} CUtente;
+
+typedef struct sListaCentrosDeVacinacao
+{
+    CentroDeVacinacao centros[1000];
+    
+} ListaCentros;
+
+typedef struct sListaUtentes
+{
+    CUtente utentes[1000];
+
+} ListaUtentes;
+
+typedef struct sListaVacinas
+{
+    Vacina vacinas[10];
+
+} ListaVacinas;
