@@ -4,6 +4,8 @@
 
 Utente criarUtente(){
     Utente u;
+    u.idade = 0;
+    u.numeroDeUtente = 0;
     printf("O nome do Utente:");
     while (getchar() != '\n');
     fgets(u.nome,100, stdin);

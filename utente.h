@@ -1,5 +1,3 @@
-#include<stdio.h>
-#include<string.h>
 
 typedef struct sUtente{
     char nome[101];

@@ -4,6 +4,7 @@
 
 CentroVacinacao criarCentro() {
     CentroVacinacao cv;
+    cv.centroID = 0;
     printf("O nome do Centro:");
     while (getchar() != '\n');
     fgets(cv.nomeCentro,101, stdin);
