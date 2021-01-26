@@ -6,3 +6,4 @@ typedef struct sVacina{
    
 } Vacina;
 
+Vacina criarVacina();
