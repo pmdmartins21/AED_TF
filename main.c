@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
     CentroVacinacao registos[100];
     int op=0;
     while(op!=4){
-        printf("************ BEM VIDO!! ************\n\n\n");
+        printf("************ BEM VINDO!! ************\n\n\n");
         printf(">>> MENU <<<\n\n");
         printf("1 - REGISTAR\n");
         printf("2 - CONSULTAR\n");
@@ -79,6 +79,9 @@ void tipo_registo(registos)
                     break;
                 }
 
+            case 2: {      
+                criarUtente(registos);
+                break;
             }
         }
     }
