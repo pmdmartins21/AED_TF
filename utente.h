@@ -8,6 +8,7 @@ typedef struct sUtente{
     int centroID;
     int quantidadeDosesAdmn;
     char dataUltimaDosagem[41];
+
 } Utente;
 
 Utente criarUtente();

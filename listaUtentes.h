@@ -2,6 +2,7 @@
 
 typedef struct sListaUtentes
 {
-    CUtente utentes[1000];
+    Utente utentes[1000];
 
 } ListaUtentes;
+
