@@ -2,7 +2,8 @@
 #include<stdio.h>
 #include<string.h>
 
-Utente criarUtente(){
+Utente criarUtente()
+{
     Utente u;
     u.idade = 0;
     u.numeroDeUtente = 0;
@@ -20,3 +21,5 @@ Utente criarUtente(){
     u.contatoTelefonico[strlen(u.contatoTelefonico) -1 ] = '\0';
     return u;
 }
+
+
