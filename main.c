@@ -5,11 +5,14 @@
 #include "utente.h"
 #include "listaCentros.h"
 #include "centroVacinacao.h"
+#include "listaVacinas.h"
 
 void tipo_registo(registos);
 
 int main(int argc, char const *argv[])
 {
+    ListaVacinas lv;
+    lv.numeroVacinas = 0;
     CentroVacinacao registos[100];
     int op=0;
     while(op!=4){
