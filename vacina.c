@@ -13,4 +13,3 @@ Vacina criarVacina(){
     printf("Tempo de espera:");
     scanf("%d", &c.tempoEntreVacinas);
     return c;
-}
