@@ -1,4 +1,5 @@
 #include "vacina.h"
+#include "listaVacinas.h""
 #include <stdio.h>
 #include <string.h>
 
@@ -28,7 +29,7 @@ void menuVacinas(ListaVacinas *lv) {
         printf("5- Sair\n\n");
         printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
 
-        scanf("%d", &op);
+        scanf("%d", &opcao);
         fflush(stdin);
 
         switch (opcao)
@@ -40,7 +41,7 @@ void menuVacinas(ListaVacinas *lv) {
                 editarVacina(&lv);
                 break;
             case 3:
-                inativarVacina();
+                inativarVacina(&lv);
                 break;
             case 4:
                 listarVacina();

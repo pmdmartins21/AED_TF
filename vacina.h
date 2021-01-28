@@ -8,4 +8,5 @@ typedef struct sVacina{
 
 } Vacina;
 
-Vacina criarVacina(int idVacina);
+Vacina criarVacina();
+void menuVacinas(ListaVacinas *lv);

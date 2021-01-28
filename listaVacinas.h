@@ -12,5 +12,6 @@ void editarVacina(ListaVacinas *lv);
 void inativarVacina(ListaVacinas *lv);
 int listarVacinas(ListaVacinas lv);
 
+
 void gravarDadosListaAlunos(ListaAlunos la);
 void carregarDadosListaAlunos(ListaAlunos *la);
