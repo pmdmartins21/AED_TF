@@ -48,11 +48,11 @@ void menuUtentes(ListaUtentes *lu)
                     break;
                 }
                 case 3: {
-                    listarUtente(&lu, idAEditar);//Falta fazer
+                    listarUtente(&lu);
                     break;
                 }
                 case 4: {
-                    eliminarUtente(&lu, idAEditar);//Falta fazer
+                    eliminarUtente(&lu);
                     break;
                 }
                 case 5:
