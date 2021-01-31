@@ -20,3 +20,6 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar);
 
 void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv);
 void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc);
+
+void carregarDadosListaUtentes(ListaUtentes *lu);
+void gravarDadosListaUtentes(ListaUtentes lu);

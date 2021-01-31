@@ -36,7 +36,7 @@ void menuVacinas(ListaVacinas *lv) {
         switch (opcao)
         {
             case 1:
-                criarVacina(&lv);
+                criarVacina();
                 break;
             case 2:
                 listarVacina();
@@ -54,7 +54,7 @@ void menuVacinas(ListaVacinas *lv) {
                 listarVacina();
                 break;
             case 5:
-                gravarDadosListaVacinas(&lv);
+                
                 break;
             default:
                 printf("Opção inválida\n");

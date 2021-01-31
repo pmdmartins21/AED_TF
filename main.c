@@ -33,7 +33,6 @@ int main(int argc, char const *argv[])
         scanf("%d",&centroID);
     }
     
-
     while(op!=4)
     {
         printf("************ BEM VINDO!! ************\n\n\n");
@@ -55,12 +54,15 @@ int main(int argc, char const *argv[])
         {
             case 1:
                 menuCentros(&lc, centroID);
+
                 break;
             case 2:     
                 menuUtentes(&lu);
+
                 break;
             case 3: 
                 menuVacinas(&lv);
+                gravarDadosListaVacinas(lv);
                 break;
             case 4:
                 listarUtentesPorVacinas(&lu,&lv);
@@ -68,7 +70,6 @@ int main(int argc, char const *argv[])
             case 5: 
                 listarUtentesPorCentro(&lu, &lc);
                 break;
-
             case 9: 
                 break;
             default:
