@@ -1,10 +1,12 @@
 typedef struct sVacina{
     
+    int idVacina; //codigo
     char designacao[101];
     int nDoses;
     int tempoEntreVacinas;
-    int idVacina; //codigo
-    int activo;
+    int ativo;
+
 } Vacina;
 
 Vacina criarVacina();
+void menuVacinas(ListaVacinas *lv);

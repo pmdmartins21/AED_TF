@@ -22,4 +22,48 @@ Utente criarUtente()
     return u;
 }
 
+void menuUtentes(ListaUtentes *lu, int idAEditar) 
+{
+    int op = 0;
+    while(op!=6)
+        {
+            printf(">>> MENU UTENTES %s<<<\n\n"); 
+            printf("1 - Inserir Utente\n"); 
+            printf("2 - Editar Utente\n");
+            printf("3 - Listar Utente\n");
+            printf("4 - Eliminar Utente\n");
+            printf("5 - Gravar Dados\n");
+            printf("6 - Voltar\n");
+            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
+            scanf("%d", &op);
+            fflush(stdin);
+            switch(op){
+                case 1: {
+                    incerirUtente(&lu, idAEditar);
+                    break;
+                }
+                case 2: {      
+                    editarUtente(&lu, idAEditar);
+                    break;
+                }
+                case 3: {
+                    listarUtente(&lu, idAEditar);//Falta fazer
+                    break;
+                }
+                case 4: {
+                    eliminarUtente(&lu, idAEditar);//Falta fazer
+                    break;
+                }
+                case 5:
+                //gravarDados(t);
+                break;
+                default: {
+                    printf("Opcao errada");
+                    break;
+                }
+
+            }
+        }
+}
+
 
