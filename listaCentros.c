@@ -42,6 +42,26 @@ int procurarIDNaListaCentros(ListaCentros *lc, int idAProcurar) {
     return -1;
 }
 
+void gravarDadosListaCentros(ListaCentros lc) 
+{
+    FILE * ficheiro = fopen("listaCentros.dat", "wb");
+    rewind(ficheiro);
+    fwrite(&lc, sizeof(ListaCentros), 1, ficheiro);
+    fclose(ficheiro);
+}
+
+void carregarDadosListaCentros(ListaCentros *lc)
+{
+    FILE *ficheiro;
+    ficheiro = fopen("listaCentros.dat", "rb");
+
+    if(ficheiro == NULL) return;
+
+    fread(lc, sizeof(ListaCentros), 1, ficheiro);
+
+    fclose(ficheiro);
+}
+
 void editarCentro(ListaCentros *lc, int idAEditar) {
     int op = 0;
     while(op!=5)

@@ -50,7 +50,7 @@ void inativarVacina(ListaVacinas *lv, int idAInativar) {
 }
 
 void gravarDadosListaVacinas(ListaVacinas lv) {
-    FILE * ficheiro = fopen("listaAlunos.dat", "wb");
+    FILE * ficheiro = fopen("listaVacinas.dat", "wb");
     rewind(ficheiro);
     fwrite(&lv, sizeof(ListaVacinas), 1, ficheiro);
     fclose(ficheiro);

@@ -34,10 +34,6 @@ void eliminarUtente(ListaUtentes *lu)
     printf("Qual e o numero do utente que deseja eliminar? \n");
     scanf("%d", numeroAEliminar);
 
-
-    
-
-    //remover o elemento com o numero 15
     int i;
     for(i = 0; i <lu->numeroUtentes;i++){
         if(lu->lu[i].numeroDeUtente == numeroAEliminar) break;
@@ -52,7 +48,6 @@ void eliminarUtente(ListaUtentes *lu)
         
     
 }
-
 
 void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
 {
@@ -71,7 +66,29 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
         }
             
     }
-}​​​​
+}
+
+void gravarDadosListaUtentes(ListaUtentes lu) 
+{
+    FILE * ficheiro = fopen("listaUtentes.dat", "wb");
+    rewind(ficheiro);
+    fwrite(&lu, sizeof(ListaUtentes), 1, ficheiro);
+    fclose(ficheiro);
+}
+
+void carregarDadosListaUtentes(ListaUtentes *lu)
+{
+    FILE *ficheiro;
+    ficheiro = fopen("listaUtentes.dat", "rb");
+
+    if(ficheiro == NULL) return;
+
+    fread(lu, sizeof(ListaUtentes), 1, ficheiro);
+
+    fclose(ficheiro);
+}
+
+
 
 void editarUtente(ListaUtentes *lu, int idAEditar) 
 {

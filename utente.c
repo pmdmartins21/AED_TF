@@ -33,8 +33,8 @@ void menuUtentes(ListaUtentes *lu)
             printf("1 - Inserir Utente\n"); 
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
-            printf("4 - Eliminar Utente\n");
-            printf("5 - Gravar Dados\n");
+            printf("4 - Gravar dados do Utente\n");
+            printf("5 - Eliminar Utente\n");
             printf("6 - Voltar\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
             scanf("%d", &op);
@@ -56,12 +56,13 @@ void menuUtentes(ListaUtentes *lu)
                     break;
                 
                 case 4: 
-                    eliminarUtente(&lu);
+                    gravarDadosListaUtentes(&lu);
                     break;
                 
                 case 5:
-                //gravarDados(t);
+                    eliminarUtente(&lu);
                 break;
+                
                 default: 
                     printf("Opcao errada");
                     break;

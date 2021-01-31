@@ -1,5 +1,5 @@
 #include "vacina.h"
-#include "listaVacinas.h""
+#include "listaVacinas.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -26,7 +26,8 @@ void menuVacinas(ListaVacinas *lv) {
         printf("2 - Editar vacina\n");
         printf("3 - Inativar vacina\n");
         printf("4 - Listar vacinas\n");
-        printf("5- Sair\n\n");
+        printf("5 - Gravar dados da vacina\n");
+        printf("6 - Sair\n\n");
         printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
 
         scanf("%d", &opcao);
@@ -51,6 +52,9 @@ void menuVacinas(ListaVacinas *lv) {
                 break;
             case 4:
                 listarVacina();
+                break;
+            case 5:
+                gravarDadosListaVacinas(&lv);
                 break;
             default:
                 printf("Opção inválida\n");

@@ -29,40 +29,44 @@ void menuCentros(ListaCentros *lc , int idCentroAtivo) {
             printf("1 - Inserir novo Centro \n"); 
             printf("2 - Editar Centro\n");
             printf("3 - Inativar Centro\n");
-            printf("4- Sair\n\n");
+            printf("4 - Gravar dados do Centro\n");
+            printf("5 - Sair\n\n");
             printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
 
             scanf("%d", &op);
             fflush(stdin);
-            switch(op){
-                case 1: {
+            switch(op)
+            {
+                case 1: 
                     inserirCentro(&lc);
                     break;
-                }
-                case 2: {      
+                
+                case 2:    
                     listarCentros(&lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     editarCentro(&lc, idAManipular);
                     break;
-                }
-                case 3: {
+                
+                case 3: 
                     listarCentros(&lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     inactivarCentro(&lc, idAManipular);
                     break;
-                }
-                case 4: {
+                
+                case 4: 
+                    gravarDadosListaCentros(&lc);
                     break;
-                }
+                
                 case 5:
-                //gravarDados(t);
+
                 break;
-                default: {
+
+                default: 
                     printf("Opcao errada");
                     break;
-                }
+                
 
             }
         }
