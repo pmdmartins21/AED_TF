@@ -33,9 +33,8 @@ void menuUtentes(ListaUtentes *lu)
             printf("1 - Inserir Utente\n"); 
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
-            printf("4 - Gravar dados do Utente\n");
-            printf("5 - Eliminar Utente\n");
-            printf("6 - Voltar\n");
+            printf("4 - Eliminar Utente\n");            
+            printf("5 - Voltar\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
             scanf("%d", &op);
             fflush(stdin);
@@ -54,12 +53,8 @@ void menuUtentes(ListaUtentes *lu)
                 case 3: 
                     listarUtente(&lu);
                     break;
-                
-                case 4: 
-                    gravarDadosListaUtentes(&lu);
-                    break;
-                
-                case 5:
+    
+                case 4:
                     eliminarUtente(&lu);
                 break;
                 

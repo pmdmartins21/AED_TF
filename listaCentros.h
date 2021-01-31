@@ -20,4 +20,5 @@ int procurarIDNaListaCentros(ListaCentros *lc, int idAProcurar);
 void listarCentros(ListaCentros *lc);
 
 void gravarDadosListaCentros(ListaCentros lc);
+
 void carregarDadosListaCentros(ListaCentros *lc);

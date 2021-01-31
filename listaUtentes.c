@@ -68,7 +68,7 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
     }
 }
 
-void gravarDadosListaUtentes(ListaUtentes lu) 
+void gravarDadosListaUtentes(ListaUtentes *lu) 
 {
     FILE * ficheiro = fopen("listaUtentes.dat", "wb");
     rewind(ficheiro);

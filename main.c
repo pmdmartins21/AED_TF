@@ -54,18 +54,18 @@ int main(int argc, char const *argv[])
         {
             case 1:
                 menuCentros(&lc, centroID);
-
+                void gravarDadosListaCentros(lc);
                 break;
             case 2:     
                 menuUtentes(&lu);
-
+                void gravarDadosListaUtentes(lu);
                 break;
             case 3: 
                 menuVacinas(&lv);
                 gravarDadosListaVacinas(lv);
                 break;
             case 4:
-                listarUtentesPorVacinas(&lu,&lv);
+                listarUtentesPorVacinas(&lu, &lv);
                 break;
             case 5: 
                 listarUtentesPorCentro(&lu, &lc);

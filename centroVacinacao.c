@@ -29,8 +29,7 @@ void menuCentros(ListaCentros *lc , int idCentroAtivo) {
             printf("1 - Inserir novo Centro \n"); 
             printf("2 - Editar Centro\n");
             printf("3 - Inativar Centro\n");
-            printf("4 - Gravar dados do Centro\n");
-            printf("5 - Sair\n\n");
+            printf("4 - Sair\n\n");
             printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
 
             scanf("%d", &op);
@@ -55,12 +54,7 @@ void menuCentros(ListaCentros *lc , int idCentroAtivo) {
                     inactivarCentro(&lc, idAManipular);
                     break;
                 
-                case 4: 
-                    gravarDadosListaCentros(&lc);
-                    break;
-                
-                case 5:
-
+                case 4:
                 break;
 
                 default: 
