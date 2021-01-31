@@ -102,23 +102,6 @@ void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
     {
         if (lv->lv[i].idVacina == idAEditar)
         {
-            printf("Insira o novo Nome da Vacina:\n");
-            while (getchar() != '\n');
-            strcpy(lv->lv[i].designacao,"\0");
-            fgets(lv->lv[i].designacao,101, stdin);
-            lv->lv[i].designacao[strlen(lv->lv[i].designacao) -1 ] = '\0';
-        }else{
-            printf("ID nao encontrado");
-        }
-    }
-}
-
-void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
-
-    for (int i = 0; i < lv->numeroVacinas; i++)
-    {
-        if (lv->lv[i].idVacina == idAEditar)
-        {
             printf("Insira o novo nome da vacina:\n");
             while (getchar() != '\n');
             strcpy(lv->lv[i].designacao,"\0");
