@@ -8,4 +8,4 @@ typedef struct sCentroVacinacao{
 
 CentroVacinacao criarCentro();
 
-void menuCentros(ListaCentros lc, int idCentroAtivo);
+

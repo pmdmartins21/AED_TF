@@ -4,6 +4,50 @@
 #include <stdio.h>
 #include <string.h>
 
+void menuUtentes(ListaUtentes *lu) 
+{
+    int numeroAEditar;
+    int op = 0;
+    while(op!=6)
+        {
+            printf(">>> MENU UTENTES %s<<<\n\n"); 
+            printf("1 - Inserir Utente\n"); 
+            printf("2 - Editar Utente\n");
+            printf("3 - Listar Utente\n");
+            printf("4 - Eliminar Utente\n");            
+            printf("5 - Voltar\n");
+            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
+            scanf("%d", &op);
+            fflush(stdin);
+            switch(op){
+                case 1:     
+                    inserirUtente(&lu);
+                    break;
+                
+                case 2: 
+                    editarUtente;
+                    printf("Qual o numero do Utente que deseja editar?");
+                    scanf("%d", &numeroAEditar);
+                    editarUtente(&lu, numeroAEditar);
+                    break;
+                
+                case 3: 
+                    listarUtente(&lu);
+                    break;
+    
+                case 4:
+                    eliminarUtente(&lu);
+                break;
+                
+                default: 
+                    printf("Opcao errada");
+                    break;
+                
+
+            }
+        }
+}
+
 
 
 void inserirUtente(ListaUtentes *lu)
@@ -68,7 +112,7 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
     }
 }
 
-void gravarDadosListaUtentes(ListaUtentes *lu) 
+void gravarDadosListaUtentes(ListaUtentes lu) 
 {
     FILE * ficheiro = fopen("listaUtentes.dat", "wb");
     rewind(ficheiro);

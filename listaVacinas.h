@@ -15,3 +15,4 @@ void listarVacinasAlfabeticamente(ListaVacinas *lv);
 void gravarDadosListaVacinas(ListaVacinas lv);
 void carregarDadosListaVacinas(ListaVacinas *lv);
 
+void menuVacinas(ListaVacinas *lv);

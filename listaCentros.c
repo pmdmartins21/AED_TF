@@ -3,6 +3,52 @@
 #include <stdio.h>
 #include <string.h>
 
+void menuCentros(ListaCentros *lc , int idCentroAtivo) {
+    int idAManipular;
+    int op = 0;
+    while(op!=4)
+        {
+            printf(">>> MENU CENTROS DE VACINACAO %s<<<\n\n"); //inserir atual com funcao search by id ??
+            printf("1 - Inserir novo Centro \n"); 
+            printf("2 - Editar Centro\n");
+            printf("3 - Inativar Centro\n");
+            printf("4 - Sair\n\n");
+            printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
+
+            scanf("%d", &op);
+            fflush(stdin);
+            switch(op)
+            {
+                case 1: 
+                    inserirCentro(&lc);
+                    break;
+                
+                case 2:    
+                    listarCentros(&lc);
+                    printf("indique o ID do Centro");
+                    scanf("%d", &idAManipular);
+                    editarCentro(&lc, idAManipular);
+                    break;
+                
+                case 3: 
+                    listarCentros(&lc);
+                    printf("indique o ID do Centro");
+                    scanf("%d", &idAManipular);
+                    inactivarCentro(&lc, idAManipular);
+                    break;
+                
+                case 4:
+                break;
+
+                default: 
+                    printf("Opcao errada");
+                    break;
+                
+
+            }
+        }
+}
+
 // Inserir, editar e inactivar centros de vacinação;
 
 void inserirCentro(ListaCentros *lc) {

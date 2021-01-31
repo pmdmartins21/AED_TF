@@ -1,5 +1,4 @@
 #include "vacina.h"
-#include "listaVacinas.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -16,49 +15,5 @@ Vacina criarVacina(){
     return v;
 }
 
-void menuVacinas(ListaVacinas *lv) {
-    int idAInativar;
-    int opcao = 0;
-    while (opcao != 5)
-    {
-        printf(">>> MENU VACINAS <<<\n\n");
-        printf("1 - Inserir nova vacina\n"); 
-        printf("2 - Editar vacina\n");
-        printf("3 - Inativar vacina\n");
-        printf("4 - Listar vacinas\n");
-        printf("5 - Sair\n\n");
-        printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
 
-        scanf("%d", &opcao);
-        fflush(stdin);
-
-        switch (opcao)
-        {
-            case 1:
-                inserirVacina(&lv);
-                break;
-            case 2:
-                listarVacina();
-                printf("Qual o id da vacina a editar?");
-                scanf("%d", &idAInativar);
-                editarVacina(&lv, idAInativar);
-                break;
-            case 3:
-                listarVacina();
-                printf("Qual o id da vacina a inativar?");
-                scanf("%d", &idAInativar);
-                inativarVacina(&lv, idAInativar);
-                break;
-            case 4:
-                listarVacina();
-                break;
-            case 5:
-
-                break;
-            default:
-                printf("Opção inválida\n");
-                break;
-        }
-    }  
-}
            

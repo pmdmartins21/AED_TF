@@ -22,3 +22,5 @@ void listarCentros(ListaCentros *lc);
 void gravarDadosListaCentros(ListaCentros lc);
 
 void carregarDadosListaCentros(ListaCentros *lc);
+
+void menuCentros(ListaCentros *lc, int idCentroAtivo);

@@ -2,10 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#include "centroVacinacao.h"
-#include "utente.h"
 #include "listaCentros.h"
-#include "centroVacinacao.h"
 #include "listaVacinas.h"
 #include "listaUtentes.h"
 
