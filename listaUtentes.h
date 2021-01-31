@@ -1,5 +1,6 @@
 #include "utente.h"
-
+#include "listaCentros.h"
+#include "listaVacinas.h"
 
 typedef struct sListaUtentes
 {
@@ -16,6 +17,6 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar);
 void alterarContacto(ListaUtentes *lu, int idAEditar);
 void alterarIdadeUtente(ListaUtentes *lu, int idAEditar);
 void alterarNumeroUtente(ListaUtentes *lu, int idAEditar);
+
 void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv);
-
-
+void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc);

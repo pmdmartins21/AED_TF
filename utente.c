@@ -40,7 +40,7 @@ void menuUtentes(ListaUtentes *lu)
             scanf("%d", &op);
             fflush(stdin);
             switch(op){
-                case 1: 
+                case 1:     
                     inserirUtente(&lu);
                     break;
                 

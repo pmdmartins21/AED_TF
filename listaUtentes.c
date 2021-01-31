@@ -90,6 +90,23 @@ void carregarDadosListaUtentes(ListaUtentes *lu)
 
 
 
+void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
+    for (int i = 0; i < lc->numeroCentros; i++) // correr lista de centros
+        {
+            printf("===== Centro %d =====", i+1);
+            printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
+            for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
+            {
+                if (lu->lu[j].centroID == i+1)
+                {
+                    printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,lu->lu[j].dataUltimaDosagem);
+                }
+                
+            }
+            
+        }
+}
+
 void editarUtente(ListaUtentes *lu, int idAEditar) 
 {
     int op = 0;

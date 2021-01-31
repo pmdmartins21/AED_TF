@@ -63,10 +63,10 @@ int main(int argc, char const *argv[])
                 menuVacinas(&lv);
                 break;
             case 4:
-                listarUtentesPorVacinas(&lu);
+                listarUtentesPorVacinas(&lu,&lv);
                 break;
             case 5: 
-                listarUtentesPorCentro(&lu);
+                listarUtentesPorCentro(&lu, &lc);
                 break;
 
             case 9: 
