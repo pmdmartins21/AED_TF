@@ -1,6 +1,8 @@
 #include "listaUtentes.h"
+#include "listaVacinas.h"
 #include "utente.h"
 #include <stdio.h>
+#include <string.h>
 
 
 
@@ -51,6 +53,26 @@ void eliminarUtente(ListaUtentes *lu)
     
 }
 
+
+void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
+{
+    for (int i = 0; i < lv->numeroVacinas; i++) // correr lista vacinas
+    {
+        printf("===== VACINA %d =====", lv->lv[i].idVacina);
+        printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
+
+        for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
+        {
+            if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
+            {
+                printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,lu->lu[j].dataUltimaDosagem);
+            }
+            
+        }
+            
+    }
+}​​​​
+
 void editarUtente(ListaUtentes *lu, int idAEditar) 
 {
     int op = 0;
@@ -65,32 +87,34 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
             scanf("%d", &op);
             fflush(stdin);
-            switch(op){
-                case 1: {
+            switch(op)
+            {
+                case 1: 
                     alterarNomeUtente(&lu, idAEditar);
                     break;
-                }
-                case 2: {      
+                
+                case 2: 
                     alterarNumeroUtente(&lu, idAEditar);
                     break;
-                }
-                case 3: {
+                
+                case 3: 
                     alterarIdadeUtente(&lu, idAEditar);
                     break;
-                }
-                case 4: {
+                
+                case 4: 
                     alterarContacto(&lu, idAEditar);
                     break;
-                }
+                
                 case 5:
                 //gravarDados(t);
                 break;
-                default: {
+                
+                default: 
                     printf("Opcao errada");
                     break;
-                }
-
             }
+
+            
         }
 }
 
@@ -161,6 +185,9 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar)
         }
     }
 }
+
+
+
 
 
  
