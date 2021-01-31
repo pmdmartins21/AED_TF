@@ -1,7 +1,7 @@
 #include "centroVacinacao.h"
-#include<stdio.h>
-#include<string.h>
-#include"listaCentros.h"
+#include <stdio.h>
+#include <string.h>
+#include "listaCentros.h"
 
 CentroVacinacao criarCentro() {
     CentroVacinacao cv;
@@ -20,7 +20,7 @@ CentroVacinacao criarCentro() {
     return cv;
 }
 
-void menuCentros(ListaCentros *lc) {
+void menuCentros(ListaCentros *lc , int idCentroAtivo) {
     int idAManipular;
     int op = 0;
     while(op!=4)
@@ -40,21 +40,20 @@ void menuCentros(ListaCentros *lc) {
                     break;
                 }
                 case 2: {      
-                    listarCentros(&lc); // falta fazer
+                    listarCentros(&lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     editarCentro(&lc, idAManipular);
                     break;
                 }
                 case 3: {
-                    listarCentros(&lc); // falta fazer
+                    listarCentros(&lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     inactivarCentro(&lc, idAManipular);
                     break;
                 }
                 case 4: {
-                    alterarEstado(cv);
                     break;
                 }
                 case 5:

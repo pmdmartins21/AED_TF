@@ -6,6 +6,6 @@ typedef struct sCentroVacinacao{
     int activo;
 } CentroVacinacao;
 
-CentroVacinacao criarCentro() ;
+CentroVacinacao criarCentro();
 
-void menuCentros(lc);
+void menuCentros(ListaCentros lc, int idCentroAtivo);

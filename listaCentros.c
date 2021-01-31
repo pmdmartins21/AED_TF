@@ -11,6 +11,17 @@ void inserirCentro(ListaCentros *lc) {
     lc->numeroCentros++;
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
 
+void listarCentros(ListaCentros *lc) {
+    printf(">>>           LISTA DE CENTROS     <<<\n\n");
+    printf("ID Centro |           Designacao         \n");
+    //Listar Centros
+    for (int i = 0; i < lc->numeroCentros; i++) {
+        printf("%d    |  %s   ",lc->centros[i].centroID,lc->centros[i].nomeCentro);
+
+    }
+}
+
+
 void inactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
     for (int i = 0; i < lc->numeroCentros; i++)
     {
@@ -21,14 +32,14 @@ void inactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
     }
 }
 
-int procurarIDNaLista(ListaCentros *lc, int idAProcurar) {
+int procurarIDNaListaCentros(ListaCentros *lc, int idAProcurar) {
     for (int i = 0; i < lc->numeroCentros; i++)
     {
         if(lc->centros[i].centroID == idAProcurar) {
             return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 void editarCentro(ListaCentros *lc, int idAEditar) {

@@ -16,44 +16,59 @@ int main(int argc, char const *argv[])
     setlocale(LC_ALL, "Portuguese");
     ListaVacinas lv;
     lv.numeroVacinas = 0;
+    ListaCentros lc;
+    int op=0;
+    ListaUtentes lu;
     CentroVacinacao registos[100];
     int op=0;
+    int centroID;
+
+    //Metodo entrada?
+    printf(">>> Por favor escolha o seu Centro <<<\n\n");
+    listarCentros(&lc);
+    scanf("%d",&centroID);
+    while (procurarIDNaListaCentros(&lc,centroID) < 0)
+    {
+        printf("ID incorrecto, por favor introduza outro:\n");
+        scanf("%d",&centroID);
+    }
+    
 
     while(op!=4)
     {
-        printf("************ BEM VINDO!! ************\n\n\n");
-        printf(">>> MENU <<<\n\n");
-        printf("1 - REGISTAR\n");
-        printf("2 - CONSULTAR\n");
-        printf("3 - ELIMINAR\n");
-        printf("4 - SAIR\n\n");
-        printf("OPCAO: ");
+        printf(">>> Tipo de registos <<<\n\n");
+        printf("1 - CENTROS\n");
+        printf("2 - UTENTES\n");
+        printf("3 - VACINAS\n");
+        printf("4 - VOLTAR\n\n");
+        printf("OPÇÃO: ");
 
         scanf("%d", &op);
         fflush(stdin);
         switch(op)
         {
             case 1:
-                tipo_registo(registos);
+                menuCentros(&lc, centroID);
                 break;
-            case 2:      
-                consultar(registos);
+            case 2:     
+                menuUtentes(&lu);
                 break;
             case 3: 
-                eliminar(registos);
+                menuVacinas(&lv);
                 break;
             case 4: 
-                printf("\n\n Adeus!!");
+                break;
+            default:
+                printf("Opção errada");
                 break;
         }
     }
-
     getchar();
 
     return 0;
 }
 
-void tipo_registo(registos)
+/*void tipo_registo(registos)
 {
     ListaVacinas lv;
     lv.numeroVacinas = 0;
@@ -91,3 +106,4 @@ void tipo_registo(registos)
         }
     }
 }
+*/
