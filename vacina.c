@@ -39,14 +39,14 @@ void menuVacinas(ListaVacinas *lv) {
                 break;
             case 2:
                 listarVacina();
-                printf("Qual o id da vacina?");
-                scanf("%d",&idAInativar);
+                printf("Qual o id da vacina a editar?");
+                scanf("%d", &idAInativar);
                 editarVacina(&lv, idAInativar);
                 break;
             case 3:
                 listarVacina();
-                printf("Qual o id da vacina?");
-                scanf("%d",&idAInativar);
+                printf("Qual o id da vacina a inativar?");
+                scanf("%d", &idAInativar);
                 inativarVacina(&lv, idAInativar);
                 break;
             case 4:

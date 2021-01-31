@@ -48,9 +48,7 @@ int main(int argc, char const *argv[])
         }
     }
 
-getch();
-}
-
+    getchar();
 
     return 0;
 }
@@ -70,7 +68,7 @@ void tipo_registo(registos)
         printf("2 - UTENTES\n");
         printf("3 - VACINAS\n");
         printf("4 - VOLTAR\n\n");
-        printf("OPCAO: ");
+        printf("OPÇÃO: ");
 
         scanf("%d", &op);
         fflush(stdin);
@@ -88,7 +86,7 @@ void tipo_registo(registos)
             case 4: 
                 break;
             default:
-                printf("Opçao errada");
+                printf("Opção errada");
                 break;
         }
     }
