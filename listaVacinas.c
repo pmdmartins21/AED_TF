@@ -158,3 +158,22 @@ void editarTempoEntreVacina(ListaVacinas *lv, int idAEditar) {
     }
 }
 
+void listarVacinasAlfabeticamente(ListaVacinas *lv) {
+    Vacina temp;
+    for (int i = 0; i < lv->numeroVacinas; i++)
+    {
+        for (int j = i + 1; j < lv->numeroVacinas; j++)
+        {
+            if (stricmp(lv->lv[i].designacao, lv->lv[j].designacao) > 0)
+            {
+                temp = lv->lv[i];
+                lv->lv[i] = lv->lv[j];
+                lv->lv[j] = temp;   
+            }
+        }     
+    }
+    for (int i = 0; i < lv->numeroVacinas; i++)
+    {
+        puts(lv->lv[i].designacao);
+    }
+}
