@@ -36,12 +36,13 @@ int main(int argc, char const *argv[])
 
     while(op!=4)
     {
-        printf(">>> Tipo de registos <<<\n\n");
-        printf("1 - CENTROS\n");
-        printf("2 - UTENTES\n");
-        printf("3 - VACINAS\n");
-        printf("4 - VOLTAR\n\n");
-        printf("OPÇÃO: ");
+        printf("************ BEM VINDO!! ************\n\n\n");
+        printf(">>> DASHBOARD <<<\n\n");
+        printf("NÚMERO DE VACINAS ADMNISTRADAS\n");
+        printf("MÉDIA DE IDADES DOS UTENTES VACINADOS\n");
+        printf("VACINA %s (POR VACINA): NÚMERO DE UTENTES VACINADOS\n");
+        printf("4 - SAIR\n\n");
+        printf("OPCAO: ");
 
         scanf("%d", &op);
         fflush(stdin);
