@@ -1,12 +1,13 @@
 #include "utente.h"
+#include "listaUtentes.h"
 #include<stdio.h>
 #include<string.h>
 
 Utente criarUtente()
 {
     Utente u;
-    u.idade = 0;
-    u.numeroDeUtente = 0;
+    //u.idade = 0;
+    //u.numeroDeUtente = 0;
     printf("O nome do Utente:");
     while (getchar() != '\n');
     fgets(u.nome,100, stdin);
@@ -22,7 +23,7 @@ Utente criarUtente()
     return u;
 }
 
-void menuUtentes(ListaUtentes *lu, int idAEditar) 
+void menuUtentes(ListaUtentes *lu) 
 {
     int op = 0;
     while(op!=6)
@@ -39,7 +40,7 @@ void menuUtentes(ListaUtentes *lu, int idAEditar)
             fflush(stdin);
             switch(op){
                 case 1: {
-                    incerirUtente(&lu, idAEditar);
+                    inserirUtente(&lu);
                     break;
                 }
                 case 2: {      

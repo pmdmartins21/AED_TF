@@ -12,3 +12,4 @@ typedef struct sUtente{
 } Utente;
 
 Utente criarUtente();
+void menuUtentes(ListaUtentes *lu);

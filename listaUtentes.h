@@ -4,7 +4,7 @@ typedef struct sListaUtentes
 {
     Utente lu[1000];
     int numeroUtentes;
-
+    
 } ListaUtentes;
 
 void inserirUtente(ListaUtentes *lu);

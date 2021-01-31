@@ -17,7 +17,7 @@ Vacina criarVacina(){
 }
 
 void menuVacinas(ListaVacinas *lv) {
-
+    int idAInativar;
     int opcao = 0;
     while (opcao != 5)
     {
@@ -38,9 +38,15 @@ void menuVacinas(ListaVacinas *lv) {
                 criarVacina(&lv);
                 break;
             case 2:
-                editarVacina(&lv);
+                listarVacina();
+                printf("Qual o id da vacina?");
+                scanf("%d",&idAInativar);
+                editarVacina(&lv, idAInativar);
                 break;
             case 3:
+                listarVacina();
+                printf("Qual o id da vacina?");
+                scanf("%d",&idAInativar);
                 inativarVacina(&lv, idAInativar);
                 break;
             case 4:

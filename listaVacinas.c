@@ -1,5 +1,6 @@
 #include "listaVacinas.h"
 #include <stdio.h>
+#include <string.h>
 
 void inserirVacina(ListaVacinas *lv){
     Vacina v = criarVacina(lv->numeroVacinas);
@@ -67,7 +68,7 @@ void carregarDadosListaVacinas(ListaVacinas *lv){
     fclose(ficheiro);
 }
 
-void editarVacinas(ListaVacinas *lv, int idAEditar) {
+void editarVacinas(ListaVacinas *lv) {
     int op = 0;
     while(op != 4) {
         printf(">>> Edição de Vacinas <<<\n\n");
@@ -97,10 +98,19 @@ void editarVacinas(ListaVacinas *lv, int idAEditar) {
 }
 
 void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
-    int indiceID = procurarVacina(&lv, idAEditar);
-    printf("Insira o novo Nome de Centro:\n");
-    while (getchar() != '\n');
-    lv->lv[indiceID].designacao = "";
-    fgets(lv->lv[indiceID].designacao,101, stdin);
-    lv->lv[indiceID]->nomeCentro[strlen(lv->lv[indiceID].designacao) -1 ] = '\0';
+
+    for (int i = 0; i < lv->numeroVacinas; i++)
+    {
+        if (lv->lv[i].idVacina == idAEditar)
+        {
+            printf("Insira o novo Nome da Vacina:\n");
+            while (getchar() != '\n');
+            strcpy(lv->lv[i].designacao,"\0");
+            fgets(lv->lv[i].designacao,101, stdin);
+            lv->lv[i].designacao[strlen(lv->lv[i].designacao) -1 ] = '\0';
+        }else{
+            printf("ID nao encontrado");
+        }
+        
+    }
 }

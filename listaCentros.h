@@ -13,4 +13,4 @@ void inactivarCentro(ListaCentros *lc, CentroVacinacao cv);
 
 void editarCentro(ListaCentros *lc, CentroVacinacao cv);
 
-alterarNomeCentro(cv);
+void alterarNomeCentro(cv);

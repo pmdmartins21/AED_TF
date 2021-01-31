@@ -7,6 +7,7 @@
 #include "listaCentros.h"
 #include "centroVacinacao.h"
 #include "listaVacinas.h"
+#include "listaUtentes.h"
 
 void tipo_registo(registos);
 
@@ -56,8 +57,12 @@ getch();
 
 void tipo_registo(registos)
 {
+    ListaVacinas lv;
+    lv.numeroVacinas = 0;
     ListaCentros lc;
     int op=0;
+    ListaUtentes lu;
+
     while(op!=4)
     {
         printf(">>> Tipo de registos <<<\n\n");
@@ -71,17 +76,19 @@ void tipo_registo(registos)
         fflush(stdin);
         switch(op)
         {
-            case 1:  
+            case 1:
                 menuCentros(&lc);
                 break;
             case 2:     
-                verifica_registo_utentes(registos);
+                menuUtentes(&lu);
                 break;
             case 3: 
-                verifica_registo_vacinas(registos);
+                menuVacinas(&lv);
                 break;
             case 4: 
-                criarUtente(registos);
+                break;
+            default:
+                printf("Opçao errada");
                 break;
         }
     }
