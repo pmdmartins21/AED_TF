@@ -1,14 +1,14 @@
-all: listaVacinas.o listaCentros.o  listaUtentes.o main.c
-	gcc -g -o main listaVacinas.o listaCentros.o listaUtentes.o main.c
+all: utente.o vacina.o centroVacinacao.o listaCentros.o listaVacinas.o  listaUtentes.o main.c
+	gcc -g -o main utente.o vacina.o centroVacinacao.o listaCentros.o listaVacinas.o  listaUtentes.o main.c
 
 listaUtentes.o: listaVacinas.o listaCentros.o utente.o listaUtentes.c
-	gcc -g -o listaVacinas.o listaCentros.o utente.o listaUtentes.o listaUtentes.c -c
+	gcc -g -o listaUtentes.o listaVacinas.o listaCentros.o utente.o  listaUtentes.c -c
 
 listaVacinas.o: vacina.o listaVacinas.c
-	gcc -g -o vacina.o listaVacinas.o listaVacinas.c -c
+	gcc -g -o listaVacinas.o vacina.o  listaVacinas.c -c
 
 listaCentros.o: centroVacinacao.o listaCentros.c
-	gcc -g -o centroVacinacao.o listaCentros.o listaCentros.c -c
+	gcc -g -o listaCentros.o centroVacinacao.o  listaCentros.c -c
 
 utente.o: utente.c
 	gcc -g -o utente.o utente.c -c

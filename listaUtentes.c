@@ -4,49 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 
-void menuUtentes(ListaUtentes *lu) 
-{
-    int numeroAEditar;
-    int op = 0;
-    while(op!=6)
-        {
-            printf(">>> MENU UTENTES %s<<<\n\n"); 
-            printf("1 - Inserir Utente\n"); 
-            printf("2 - Editar Utente\n");
-            printf("3 - Listar Utente\n");
-            printf("4 - Eliminar Utente\n");            
-            printf("5 - Voltar\n");
-            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
-            scanf("%d", &op);
-            fflush(stdin);
-            switch(op){
-                case 1:     
-                    inserirUtente(&lu);
-                    break;
-                
-                case 2: 
-                    editarUtente;
-                    printf("Qual o numero do Utente que deseja editar?");
-                    scanf("%d", &numeroAEditar);
-                    editarUtente(&lu, numeroAEditar);
-                    break;
-                
-                case 3: 
-                    listarUtente(&lu);
-                    break;
-    
-                case 4:
-                    eliminarUtente(&lu);
-                break;
-                
-                default: 
-                    printf("Opcao errada");
-                    break;
-                
-
-            }
-        }
-}
 
 
 
@@ -151,51 +108,6 @@ void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
         }
 }
 
-void editarUtente(ListaUtentes *lu, int idAEditar) 
-{
-    int op = 0;
-    while(op!=5)
-        {
-            printf(">>> Edicao de Utentes %s<<<\n\n"); 
-            printf("1 - Nome do Utente\n"); 
-            printf("2 - Numero do Utente\n");
-            printf("3 - Idade do Utente\n");
-            printf("4 - Contacto Telefonico\n");
-            printf("5 - Sair\n\n");
-            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
-            scanf("%d", &op);
-            fflush(stdin);
-            switch(op)
-            {
-                case 1: 
-                    alterarNomeUtente(&lu, idAEditar);
-                    break;
-                
-                case 2: 
-                    alterarNumeroUtente(&lu, idAEditar);
-                    break;
-                
-                case 3: 
-                    alterarIdadeUtente(&lu, idAEditar);
-                    break;
-                
-                case 4: 
-                    alterarContacto(&lu, idAEditar);
-                    break;
-                
-                case 5:
-                //gravarDados(t);
-                break;
-                
-                default: 
-                    printf("Opcao errada");
-                    break;
-            }
-
-            
-        }
-}
-
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar) 
 {
 
@@ -263,6 +175,53 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar)
         }
     }
 }
+
+void editarUtente(ListaUtentes *lu, int idAEditar) 
+{
+    int op = 0;
+    while(op!=5)
+        {
+            printf(">>> Edicao de Utentes %s<<<\n\n"); 
+            printf("1 - Nome do Utente\n"); 
+            printf("2 - Numero do Utente\n");
+            printf("3 - Idade do Utente\n");
+            printf("4 - Contacto Telefonico\n");
+            printf("5 - Sair\n\n");
+            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
+            scanf("%d", &op);
+            fflush(stdin);
+            switch(op)
+            {
+                case 1: 
+                    alterarNomeUtente(&lu, idAEditar);
+                    break;
+                
+                case 2: 
+                    alterarNumeroUtente(&lu, idAEditar);
+                    break;
+                
+                case 3: 
+                    alterarIdadeUtente(&lu, idAEditar);
+                    break;
+                
+                case 4: 
+                    alterarContacto(&lu, idAEditar);
+                    break;
+                
+                case 5:
+                //gravarDados(t);
+                break;
+                
+                default: 
+                    printf("Opcao errada");
+                    break;
+            }
+
+            
+        }
+}
+
+
 
 
 

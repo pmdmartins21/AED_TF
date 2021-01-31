@@ -23,4 +23,3 @@ void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc);
 
 void carregarDadosListaUtentes(ListaUtentes *lu);
 void gravarDadosListaUtentes(ListaUtentes lu);
-void menuUtentes(ListaUtentes *lu);

@@ -3,56 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 
-void menuCentros(ListaCentros *lc , int idCentroAtivo) {
-    int idAManipular;
-    int op = 0;
-    while(op!=4)
-        {
-            printf(">>> MENU CENTROS DE VACINACAO %s<<<\n\n"); //inserir atual com funcao search by id ??
-            printf("1 - Inserir novo Centro \n"); 
-            printf("2 - Editar Centro\n");
-            printf("3 - Inativar Centro\n");
-            printf("4 - Sair\n\n");
-            printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
 
-            scanf("%d", &op);
-            fflush(stdin);
-            switch(op)
-            {
-                case 1: 
-                    inserirCentro(&lc);
-                    break;
-                
-                case 2:    
-                    listarCentros(&lc);
-                    printf("indique o ID do Centro");
-                    scanf("%d", &idAManipular);
-                    editarCentro(&lc, idAManipular);
-                    break;
-                
-                case 3: 
-                    listarCentros(&lc);
-                    printf("indique o ID do Centro");
-                    scanf("%d", &idAManipular);
-                    inactivarCentro(&lc, idAManipular);
-                    break;
-                
-                case 4:
-                break;
-
-                default: 
-                    printf("Opcao errada");
-                    break;
-                
-
-            }
-        }
-}
 
 // Inserir, editar e inactivar centros de vacinação;
 
-void inserirCentro(ListaCentros *lc) {
-    CentroVacinacao cv = criarCentro();
+void inserirCentro(ListaCentros *lc, CentroVacinacao cv) {
     lc->centros[lc->numeroCentros] = cv;
     lc->numeroCentros++;
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
@@ -66,7 +21,6 @@ void listarCentros(ListaCentros *lc) {
 
     }
 }
-
 
 void inactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
     for (int i = 0; i < lc->numeroCentros; i++)
@@ -108,6 +62,56 @@ void carregarDadosListaCentros(ListaCentros *lc)
     fclose(ficheiro);
 }
 
+
+
+void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
+
+    for (int i = 0; i < lc->numeroCentros; i++)
+    {
+        if (lc->centros[i].centroID == idAEditar)
+        {
+            printf("Insira o novo Nome de Centro:\n");
+            while (getchar() != '\n');
+            strcpy(lc->centros[i].nomeCentro,"\0");
+            fgets(lc->centros[i].nomeCentro,101, stdin);
+            lc->centros[i].nomeCentro[strlen(lc->centros[i].nomeCentro) -1 ] = '\0';
+        }else{
+            printf("ID nao encontrado");
+        }    
+    }
+    
+}
+
+void alterarMoradaCentro(ListaCentros *lc, int idAEditar) {
+    //procurar o id na lista
+    int indiceID = procurarIDNaListaCentros(lc, idAEditar);
+    strcpy(lc->centros[indiceID].morada,"\0");
+    printf("Insira a nova Morada de Centro:\n");
+    while (getchar() != '\n');
+    fgets(lc->centros[indiceID].morada,101, stdin);
+    lc->centros[indiceID].morada[strlen(lc->centros[indiceID].morada) -1 ] = '\0';
+}
+
+void alterarIdCentro(ListaCentros *lc, int idAEditar){
+    int novoIndice;
+    int indiceID = procurarIDNaListaCentros(lc, idAEditar);
+    printf("Insira o novo ID de Centro:\n");
+    scanf("%d", novoIndice);
+    lc->centros[indiceID].centroID = novoIndice;
+}
+
+int mostrarEstadoAtual(ListaCentros *lc, int idAEditar) {
+     int indiceID = procurarIDNaListaCentros(lc, idAEditar);
+     return lc->centros[indiceID].activo;
+ }
+
+void alterarEstado(ListaCentros *lc, int idAEditar){
+    int indiceID = procurarIDNaListaCentros(lc, idAEditar);
+    mostrarEstadoAtual(lc, idAEditar) == 0 ? lc->centros[indiceID].activo = 1 : printf("Erro! Centro activo");
+ }
+
+ 
+
 void editarCentro(ListaCentros *lc, int idAEditar) {
     int op = 0;
     while(op!=5)
@@ -116,7 +120,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
             printf("1 - Nome do Centro \n"); 
             printf("2 - Morada\n");
             printf("3 - ID do Centro\n");
-            printf("4 - Estado Atual: %s | (Só aplicavel para reativar)\n\n",mostrarEstadoAtual(&lc, idAEditar) == 1 ? "Activo" : "Inativo"); // mostrar estado atual e permitir alterar?? ja tem opcao para inativar... Opcao valida se inativo?
+            printf("4 - Estado Atual: %s | (Só aplicavel para reativar)\n\n",mostrarEstadoAtual(lc, idAEditar) == 1 ? "Activo" : "Inativo"); // mostrar estado atual e permitir alterar?? ja tem opcao para inativar... Opcao valida se inativo?
             printf("5 - Sair\n\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
 
@@ -124,19 +128,19 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
             fflush(stdin);
             switch(op){
                 case 1: {
-                    alterarNomeCentro(&lc, idAEditar);
+                    alterarNomeCentro(lc, idAEditar);
                     break;
                 }
                 case 2: {      
-                    alterarMoradaCentro(&lc, idAEditar);
+                    alterarMoradaCentro(lc, idAEditar);
                     break;
                 }
                 case 3: {
-                    alterarIdCentro(&lc, idAEditar);
+                    alterarIdCentro(lc, idAEditar);
                     break;
                 }
                 case 4: {
-                    alterarEstado(&lc, idAEditar);
+                    alterarEstado(lc, idAEditar);
                     break;
                 }
                 case 5:
@@ -151,56 +155,3 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
         }
 }
 
-void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
-    /*
-    int indiceID = procurarIDNaLista(&lc, idAEditar);
-    printf("Insira o novo Nome de Centro:\n");
-    while (getchar() != '\n');
-    strcpy(lc->centros[indiceID].nomeCentro,"\0");
-    fgets(lc->centros[indiceID].nomeCentro,101, stdin);
-    lc->centros[indiceID].nomeCentro[strlen(lc->centros[indiceID].nomeCentro) -1 ] = '\0';
-*/
-    for (int i = 0; i < lc->numeroCentros; i++)
-    {
-        if (lc->centros[i].centroID == idAEditar)
-        {
-            printf("Insira o novo Nome de Centro:\n");
-            while (getchar() != '\n');
-            strcpy(lc->centros[i].nomeCentro,"\0");
-            fgets(lc->centros[i].nomeCentro,101, stdin);
-            lc->centros[i].nomeCentro[strlen(lc->centros[i].nomeCentro) -1 ] = '\0';
-        }else{
-            printf("ID nao encontrado");
-        }
-        
-    }
-    
-}
-
-void alterarMoradaCentro(ListaCentros *lc, int idAEditar) {
-    //procurar o id na lista
-    int indiceID = procurarIDNaLista(&lc, idAEditar);
-    strcpy(lc->centros[indiceID].morada,"\0");
-    printf("Insira a nova Morada de Centro:\n");
-    while (getchar() != '\n');
-    fgets(lc->centros[indiceID].morada,101, stdin);
-    lc->centros[indiceID].morada[strlen(lc->centros[indiceID].morada) -1 ] = '\0';
-}
-
-void alterarIdCentro(ListaCentros *lc, int idAEditar){
-    int novoIndice;
-    int indiceID = procurarIDNaLista(&lc, idAEditar);
-    printf("Insira o novo ID de Centro:\n");
-    scanf("%d", novoIndice);
-    lc->centros[indiceID].centroID = novoIndice;
-}
-
-void alterarEstado(ListaCentros *lc, int idAEditar){
-    int indiceID = procurarIDNaLista(&lc, idAEditar);
-    mostrarEstadoAtual(&lc, idAEditar) == 0 ? lc->centros[indiceID].activo = 1 : print("Erro! Centro activo");
- }
-
- int mostrarEstadoAtual(ListaCentros *lc, int idAEditar) {
-     int indiceID = procurarIDNaLista(&lc, idAEditar);
-     return lc->centros[indiceID].activo;
- }
