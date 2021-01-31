@@ -25,6 +25,7 @@ Utente criarUtente()
 
 void menuUtentes(ListaUtentes *lu) 
 {
+    int numeroAEditar;
     int op = 0;
     while(op!=6)
         {
@@ -39,29 +40,32 @@ void menuUtentes(ListaUtentes *lu)
             scanf("%d", &op);
             fflush(stdin);
             switch(op){
-                case 1: {
+                case 1: 
                     inserirUtente(&lu);
                     break;
-                }
-                case 2: {      
-                    editarUtente(&lu, idAEditar);
+                
+                case 2: 
+                    editarUtente;
+                    printf("Qual o numero do Utente que deseja editar?");
+                    scanf("%d", &numeroAEditar);
+                    editarUtente(&lu, numeroAEditar);
                     break;
-                }
-                case 3: {
+                
+                case 3: 
                     listarUtente(&lu);
                     break;
-                }
-                case 4: {
+                
+                case 4: 
                     eliminarUtente(&lu);
                     break;
-                }
+                
                 case 5:
                 //gravarDados(t);
                 break;
-                default: {
+                default: 
                     printf("Opcao errada");
                     break;
-                }
+                
 
             }
         }
