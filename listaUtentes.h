@@ -16,3 +16,5 @@ void alterarContacto(ListaUtentes *lu, int idAEditar);
 void alterarIdadeUtente(ListaUtentes *lu, int idAEditar);
 void alterarNumeroUtente(ListaUtentes *lu, int idAEditar);
 
+void listarUtentesPorVacinas(ListaUtentes *lu);
+void listarUtentesPorCentro(ListaUtentes *lu);

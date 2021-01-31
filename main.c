@@ -43,8 +43,10 @@ int main(int argc, char const *argv[])
         printf("VACINA %s (POR VACINA): NÚMERO DE UTENTES VACINADOS\n");
         printf("1 - CENTROS\n\n");
         printf("2 - UTENTES\n\n");
-        printf("4 - VACINAS\n\n");
-        printf("4 - SAIR\n\n");
+        printf("3 - VACINAS\n\n");
+        printf("4 - LISTAR UTENTES POR VACINA\n\n");
+        printf("5 - LISTAR UTENTES POR CENTRO\n\n");
+        printf("9 - SAIR\n\n");
         printf("OPCAO: ");
 
         scanf("%d", &op);
@@ -60,7 +62,14 @@ int main(int argc, char const *argv[])
             case 3: 
                 menuVacinas(&lv);
                 break;
-            case 4: 
+            case 4:
+                listarUtentesPorVacinas(&lu);
+                break;
+            case 5: 
+                listarUtentesPorCentro(&lu);
+                break;
+
+            case 9: 
                 break;
             default:
                 printf("Opção errada");
