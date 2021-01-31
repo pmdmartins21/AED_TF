@@ -36,7 +36,7 @@ void menuVacinas(ListaVacinas *lv) {
         switch (opcao)
         {
             case 1:
-                criarVacina();
+                inserirVacina(&lv);
                 break;
             case 2:
                 listarVacina();
