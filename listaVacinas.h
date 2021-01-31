@@ -2,16 +2,16 @@
 
 typedef struct sListaVacinas
 {
-    Vacina vacinas[100];
+    Vacina lv[100];
     int numeroVacinas;
 
 } ListaVacinas;
 
 void inserirVacina(ListaVacinas *lv);
 void editarVacina(ListaVacinas *lv);
-void inativarVacina(ListaVacinas *lv);
+void inativarVacina(ListaVacinas *lv, int idAInativar)
 int listarVacinas(ListaVacinas lv);
 
 
-void gravarDadosListaAlunos(ListaAlunos la);
-void carregarDadosListaAlunos(ListaAlunos *la);
+void gravarDadosListaVacinas(ListaVacinas lv);
+void carregarDadosListaVacinas(ListaVacinas *lv);

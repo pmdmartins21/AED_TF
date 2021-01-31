@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 
-void incerirUtente(ListaUtentes *lu)
+void inserirUtente(ListaUtentes *lu)
 {
-    Utente u = criarUtente();
-    lu->utentes[lu->numeroUtentes] = u;
+    Utente u = criarUtente(lu->numeroUtentes);
+    lu->lu[lu->numeroUtentes] = u;
     lu->numeroUtentes ++;
 }
 
@@ -13,7 +13,7 @@ int procurarIDNaLista(ListaUtentes *lu, int idAProcurar)
 {
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        if(lu->utente[i].numeroDeUtente == idAProcurar) 
+        if(lu->numeroUtentes[i].numeroDeUtente == idAProcurar) 
         {
             return i;
         }
@@ -24,15 +24,15 @@ int procurarIDNaLista(ListaUtentes *lu, int idAProcurar)
 void eliminarUtente(ListaUtentes *lu,int idAProcurar)
 {
     int i;
-    for(i = 0; i <lu.quantidade;i++)
+    for(i = 0; i <lu->numeroUtentes;i++)
     {
         if(lu.ListaUtentes[i] == numeroDeUtente) break;
     }
-    for(int j = i+1; j < lu.quantidade; j++)
+    for(int j = i+1; j < lu->numeroUtentes; j++)
     {
         lu.ListaUtentes[j-1] = lu.ListaUtentes[j];
     }
-    lu.quantidade = lu.quantidade -1;
+    lu->numeroUtentes = lu->numeroUtentes -1;
 }
 
 void editarUtente(ListaUtentes *lu, int idAEditar) 
@@ -78,9 +78,9 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
         }
 }
 
-void alterarNomeUtente(ListaUtentes *lu,int idAEditar) {
+void alterarNomeUtente(ListaUtentes *lu, int idAEditar) {
     int indiceID = procurarIDNaLista(&lu, idAEditar);
-    printf("Insira o novo Nome do Utente:\n")
+    printf("Insira o novo Nome do Utente:\n");
     while (getchar() != '\n');
     lu->utente[indiceID].nome = "";
     fgets(lu->utentes[indiceID].nome,101, stdin);
@@ -89,7 +89,7 @@ void alterarNomeUtente(ListaUtentes *lu,int idAEditar) {
 
 void alterarContacto(ListaUtentes *lu, int idAEditar) {
     int indiceID = procurarIDNaLista(&lu, idAEditar);
-    printf("Insira o novo Contacto Telefonico:\n")
+    printf("Insira o novo Contacto Telefonico:\n");
     while (getchar() != '\n');
     lu->utentes[indiceID].contatoTelefonico = "";
     fgets(lu->utentes[indiceID].contatoTelefonico,101, stdin);
@@ -98,7 +98,7 @@ void alterarContacto(ListaUtentes *lu, int idAEditar) {
 
 void alterarIdadeUtente(ListaUtentes *lu, int idAEditar) {
     int indiceID = procurarIDNaLista(&lu, idAEditar);
-    printf("Insira a idade do Utente:\n")
+    printf("Insira a idade do Utente:\n");
     while (getchar() != '\n');
     lu->utentes[indiceID].idade = "";
     fgets(lu->utentes[indiceID].idade,101, stdin);

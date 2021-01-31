@@ -2,13 +2,12 @@
 
 typedef struct sListaUtentes
 {
-    Utente utentes[1000];
-    int quantidade;
-
+    Utente lu[1000];
+    int numeroUtentes;
 
 } ListaUtentes;
 
-void incerirUtente(ListaUtentes *lu);
+void inserirUtente(ListaUtentes *lu);
 
 int procurarIDNaLista(ListaUtentes *lu, int idAProcurar);
 

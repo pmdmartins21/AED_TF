@@ -41,13 +41,13 @@ void menuVacinas(ListaVacinas *lv) {
                 editarVacina(&lv);
                 break;
             case 3:
-                inativarVacina(&lv);
+                inativarVacina(&lv, idAInativar);
                 break;
             case 4:
                 listarVacina();
                 break;
             default:
-                printf("Opcao invalida\n");
+                printf("Opção inválida\n");
                 break;
         }
     }  

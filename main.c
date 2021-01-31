@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #include "centroVacinacao.h"
 #include "utente.h"
 #include "listaCentros.h"
@@ -11,6 +12,7 @@ void tipo_registo(registos);
 
 int main(int argc, char const *argv[])
 {
+    setlocale(LC_ALL, "Portuguese");
     ListaVacinas lv;
     lv.numeroVacinas = 0;
     CentroVacinacao registos[100];
