@@ -75,15 +75,16 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
 {
     for (int i = 0; i < lv->numeroVacinas; i++) // correr lista vacinas
     {
-        printf("===== VACINA %d =====", lv->lv[i].idVacina);
-        printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
-
+        char dataUltimaDose[20];
+        printf("===== VACINA %d =====\n", lv->lv[i].idVacina);
+        printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
+        
         for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
         {
             if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
             {
-                
-                printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,lu->lu[j].dataUltimaDosagem);
+                sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
+                printf("%s | %d  |  %s  |  %d  |    %s\n", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
             }
             
         }
@@ -116,13 +117,15 @@ void carregarDadosListaUtentes(ListaUtentes *lu)
 void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
     for (int i = 0; i < lc->numeroCentros; i++) // correr lista de centros
         {
+            char dataUltimaDose[20];
             printf("===== Centro %d =====", i+1);
             printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
             for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
             {
                 if (lu->lu[j].centroID == i+1)
                 {
-                    printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,lu->lu[j].dataUltimaDosagem);
+                    sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
+                    printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
                 }
                 
             }
