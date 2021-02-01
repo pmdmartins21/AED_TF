@@ -113,8 +113,8 @@ void alterarEstado(ListaCentros *lc, int idAEditar){
  
 
 void editarCentro(ListaCentros *lc, int idAEditar) {
-    int op = 0;
-    while(op!=5)
+    int op6 = 0;
+    while(op6!=5)
         {
             printf(">>> Edicao de Centros de Vacinacao %s<<<\n\n"); //inserir estado atual com funcao search by id ??
             printf("1 - Nome do Centro \n"); 
@@ -124,9 +124,9 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
             printf("5 - Sair\n\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
 
-            scanf("%d", &op);
+            scanf("%d", &op6);
             fflush(stdin);
-            switch(op){
+            switch(op6){
                 case 1: {
                     alterarNomeCentro(lc, idAEditar);
                     break;

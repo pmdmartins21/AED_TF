@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     CentroVacinacao registos[100];
     int op1=0;
     int centroID;
-
+    /*
     //Metodo entrada?
     if (lc.numeroCentros != 0)
     {
@@ -36,17 +36,14 @@ int main(int argc, char const *argv[])
             scanf("%d",&centroID);
         }
     }
-    
-    
-    
-    
+    */
     while(op1!=9)
     {
         printf("************ BEM VINDO!! ************\n\n\n");
         printf(">>> DASHBOARD <<<\n\n");
         printf("NUMERO DE VACINAS ADMNISTRADAS\n");
         printf("MEDIA DE IDADES DOS UTENTES VACINADOS\n");
-        printf("VACINA %s (POR VACINA): NUMERO DE UTENTES VACINADOS\n");
+        printf("VACINA (POR VACINA): NUMERO DE UTENTES VACINADOS\n");
         printf("1 - CENTROS\n\n");
         printf("2 - UTENTES\n\n");
         printf("3 - VACINAS\n\n");
@@ -68,6 +65,7 @@ int main(int argc, char const *argv[])
                 gravarDadosListaUtentes(lu);
                 break;
             case 3: 
+                listarVacinas(lv);
                 menuVacinas(&lv);
                 gravarDadosListaVacinas(lv);
                 break;
@@ -94,7 +92,7 @@ void menuCentros(ListaCentros *lc) {
     int op2 = 0;
     while(op2!=4)
         {
-            printf(">>> MENU CENTROS DE VACINACAO %s<<<\n\n"); //inserir atual com funcao search by id ??
+            printf(">>> MENU CENTROS DE VACINACAO <<<\n\n"); //inserir atual com funcao search by id ??
             printf("1 - Inserir novo Centro \n"); 
             printf("2 - Editar Centro\n");
             printf("3 - Inativar Centro\n");
@@ -197,19 +195,17 @@ void menuVacinas(ListaVacinas *lv) {
                 inserirVacina(lv);
                 break;
             case 2:
-                listarVacinas(lv);
                 printf("Qual o id da vacina a editar?");
                 scanf("%d", &idAInativar);
                 editarVacinas(lv, idAInativar);
                 break;
             case 3:
-                listarVacinas(lv);
                 printf("Qual o id da vacina a inativar?");
                 scanf("%d", &idAInativar);
                 inativarVacina(lv, idAInativar);
                 break;
             case 4:
-                listarVacinas(lv);
+                //listarVacinas(lv);
                 break;
             case 5:
 

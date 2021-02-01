@@ -8,7 +8,7 @@ typedef struct sListaVacinas
 } ListaVacinas;
 
 void inserirVacina(ListaVacinas *lv);
-void listarVacinas(ListaVacinas *lv);
+void listarVacinas(ListaVacinas lv);
 //int procurarVacina(ListaVacinas *lv, int vacinaId);
 void inativarVacina(ListaVacinas *lv, int idAInativar);
 void editarVacinas(ListaVacinas *lv, int idAInativar);
