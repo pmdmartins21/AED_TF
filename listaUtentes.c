@@ -28,7 +28,7 @@ void eliminarUtente(ListaUtentes *lu)
     printf("Lista antes de remover:\nQuantidade: %d\nMembros:\n", lu->numeroUtentes);
     for(int i = 0; i< lu->numeroUtentes; i++) printf("%d\n", lu->lu[i].numeroDeUtente);
     printf("Qual e o numero do utente que deseja eliminar? \n");
-    scanf("%d", numeroAEliminar);
+    scanf("%d", &numeroAEliminar);
 
     int i;
     for(i = 0; i <lu->numeroUtentes;i++){
