@@ -120,7 +120,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
             printf("1 - Nome do Centro \n"); 
             printf("2 - Morada\n");
             printf("3 - ID do Centro\n");
-            printf("4 - Estado Atual: %s | (Só aplicavel para reativar)\n\n",mostrarEstadoAtual(lc, idAEditar) == 1 ? "Activo" : "Inativo"); // mostrar estado atual e permitir alterar?? ja tem opcao para inativar... Opcao valida se inativo?
+            printf("4 - Estado Atual: %s | (So aplicavel para reativar)\n\n",mostrarEstadoAtual(lc, idAEditar) == 1 ? "Activo" : "Inativo"); // mostrar estado atual e permitir alterar?? ja tem opcao para inativar... Opcao valida se inativo?
             printf("5 - Sair\n\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
 
@@ -153,7 +153,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
                 }
 
             }
-            printf("PASSEI AQUI %d", op6);
+            printf("\nPASSEI AQUI %d", op6);
         }
 }
 

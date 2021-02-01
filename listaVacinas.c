@@ -129,12 +129,12 @@ void listarVacinasAlfabeticamente(ListaVacinas *lv) {
 void editarVacinas(ListaVacinas *lv, int idAEditar) {
     int op = 0;
     while(op != 4) {
-        printf(">>> Edição de Vacinas <<<\n\n");
+        printf(">>> Edicao de Vacinas <<<\n\n");
         printf("1 - Nome da Vacina\n"); 
         printf("2 - Número de doses\n");
         printf("3 - Tempo entre vacinas\n");
         printf("4 - Sair\n\n");
-        printf(">>>ESCOLHA A OPÇÃO A ALTERAR<<<\n");
+        printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
 
         scanf("%d", &op);
         fflush(stdin);

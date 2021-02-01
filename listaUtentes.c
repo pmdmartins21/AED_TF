@@ -185,7 +185,7 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
     int op = 0;
     while(op!=5)
         {
-            printf(">>> Edicao de Utentes %s<<<\n\n"); 
+            printf(">>> Edicao de Utentes <<<\n\n"); 
             printf("1 - Nome do Utente\n"); 
             printf("2 - Numero do Utente\n");
             printf("3 - Idade do Utente\n");
