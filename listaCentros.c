@@ -114,7 +114,7 @@ void alterarEstado(ListaCentros *lc, int idAEditar){
 void editarCentro(ListaCentros *lc, int idAEditar) {
     int op6 = 0;
     
-   //while(op6!=5) 
+   while(op6!=5) 
         {
             printf(">>> Edicao de Centros de Vacinacao <<<\n\n"); //inserir estado atual com funcao search by id ??
             printf("1 - Nome do Centro \n"); 
