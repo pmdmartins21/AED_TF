@@ -5,7 +5,7 @@
 #include "listaUtentes.h"
 
 void menuCentros(ListaCentros *lc);
-void menuUtentes(ListaUtentes *lu);
+void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv);
 void menuVacinas(ListaVacinas *lv);
 
 
@@ -13,30 +13,19 @@ int main(int argc, char const *argv[])
 {
     setlocale(LC_ALL, "Portuguese");
     ListaVacinas lv;
+    //carregarDadosListaVacinas(&lv);
     lv.numeroVacinas = 0;
     ListaCentros lc;
+    //carregarDadosListaCentros(&lc);
     lc.numeroCentros = 0;
     int op=0;
     ListaUtentes lu;
+    //carregarDadosListaUtentes(&lu);
     lu.numeroUtentes = 0;
-    CentroVacinacao registos[100];
+    //CentroVacinacao registos[100]; para que é isto?
     int op1=0;
     int centroID;
-    /*
-    //Metodo entrada?
-    if (lc.numeroCentros != 0)
-    {
-        printf(">>> Por favor escolha o seu Centro <<<\n\n");
-        listarCentros(lc);
-        scanf("%d",&centroID);
 
-        while (procurarIDNaListaCentros(&lc,centroID) < 0)
-        {
-            printf("ID incorrecto, por favor introduza outro:\n");
-            scanf("%d",&centroID);
-        }
-    }
-    */
     while(op1!=9)
     {
         printf("************ BEM VINDO!! ************\n\n\n");
@@ -58,16 +47,16 @@ int main(int argc, char const *argv[])
         {
             case 1:
                 menuCentros(&lc);
-                gravarDadosListaCentros(lc);
+                //gravarDadosListaCentros(lc);
                 break;
             case 2:     
-                menuUtentes(&lu);
-                gravarDadosListaUtentes(lu);
+                menuUtentes(&lu, &lc, &lv);
+                //gravarDadosListaUtentes(lu);
                 break;
             case 3: 
-                listarVacinas(lv);
+                listarVacinas(&lv);
                 menuVacinas(&lv);
-                gravarDadosListaVacinas(lv);
+                //gravarDadosListaVacinas(lv);
                 break;
             case 4:
                 listarUtentesPorVacinas(&lu, &lv);
@@ -82,22 +71,21 @@ int main(int argc, char const *argv[])
                 break;
         }
     }
-    getchar();
-
     return 0;
 }
 
 void menuCentros(ListaCentros *lc) {
     int idAManipular;
     int op2 = 0;
-    while(op2!=4)
+    while(op2!=5)
         {
-            printf(">>> MENU CENTROS DE VACINACAO <<<\n\n"); //inserir atual com funcao search by id ??
+            printf(">>> MENU CENTROS DE VACINACAO <<<\n\n"); 
             printf("1 - Inserir novo Centro \n"); 
             printf("2 - Editar Centro\n");
             printf("3 - Inativar Centro\n");
-            printf("4 - Sair\n\n");
-            printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
+            printf("4 - Lista Centros\n\n");
+            printf("5 - Sair\n\n");
+            printf(">>>     ESCOLHA A OPCAO   <<<\n");
 
             scanf("%d", &op2);
             fflush(stdin);
@@ -117,10 +105,11 @@ void menuCentros(ListaCentros *lc) {
                     scanf("%d", &idAManipular);
                     inactivarCentro(lc, idAManipular);
                     break;
-                
                 case 4:
-                break;
-
+                    listarCentros(lc);
+                    break;
+                case 5:
+                    break;
                 default: 
                     printf("Opcao errada");
                     break;
@@ -130,7 +119,7 @@ void menuCentros(ListaCentros *lc) {
         }
 }
 
-void menuUtentes(ListaUtentes *lu) 
+void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv) 
 {
     int numeroAEditar;
     int op3 = 0;
@@ -147,7 +136,7 @@ void menuUtentes(ListaUtentes *lu)
             fflush(stdin);
             switch(op3){
                 case 1:     
-                    inserirUtente(lu);
+                    inserirUtente(lu,lc,lv);
                     break;
                 
                 case 2: 
@@ -205,7 +194,7 @@ void menuVacinas(ListaVacinas *lv) {
                 inativarVacina(lv, idAInativar);
                 break;
             case 4:
-                //listarVacinas(lv);
+                listarVacinas(lv);
                 break;
             case 5:
 

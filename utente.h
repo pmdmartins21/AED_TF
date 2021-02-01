@@ -1,3 +1,9 @@
+typedef struct sData {
+    int dias;
+    int meses;
+    int ano;
+} Data;
+
 
 typedef struct sUtente{
     char nome[101];
@@ -7,7 +13,7 @@ typedef struct sUtente{
     int vacinaID;
     int centroID;
     int quantidadeDosesAdmn;
-    char dataUltimaDosagem[41];
+    Data dataUltimaDosagem;
 
 } Utente;
 

@@ -2,9 +2,24 @@
 #include <stdio.h>
 #include <string.h>
 
-void inserirUtente(ListaUtentes *lu)
+void inserirUtente(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
 {
-    Utente u = criarUtente(lu->numeroUtentes);
+    Utente u = criarUtente();
+    listarCentros(lc);
+    printf("Indique o ID do centro onde foi vacinado\n");
+    scanf("%d", &u.centroID);
+    listarVacinas(lv);
+    printf("Indique o ID da vacina administrada\n");
+    scanf("%d", &u.vacinaID);
+    u.quantidadeDosesAdmn = 1; //ao criar estamos a assumir que está a receber a primeira dose
+    printf("Indique a data de hoje: Ex: 21/01/2020\n");
+    printf("Dia: ");
+    scanf("%d", &u.dataUltimaDosagem.dias);
+    printf("Mes: ");
+    scanf("%d", &u.dataUltimaDosagem.meses);
+    printf("Ano: ");
+    scanf("%d", &u.dataUltimaDosagem.ano);
+    u.numeroDeUtente = (lu->numeroUtentes + 1);
     lu->lu[lu->numeroUtentes] = u;
     lu->numeroUtentes ++;
 }
@@ -46,10 +61,12 @@ void eliminarUtente(ListaUtentes *lu)
 }
 
 void listarUtentes(ListaUtentes *lu) {
-    printf("N.UTENTE |       NOME       |  IDADE | TELEFONE | Vacina |  DOSES | CENTRO VAC. | DATA ULTIMA DOSE");
+    printf("N.UTENTE |       NOME       |  IDADE | TELEFONE | Vacina |  DOSES | CENTRO VAC. | DATA ULTIMA DOSE\n");
+    char dataUltimaDose[20];
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        printf(" %d  | %15s| %d  |  %s    |  %d   |  %d  |  %d  | %s",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].idade,lu->lu[i].contatoTelefonico,lu->lu[i].vacinaID,lu->lu[i].quantidadeDosesAdmn,lu->lu[i].centroID,lu->lu[i].dataUltimaDosagem);
+        sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
+        printf(" %d  | %15s| %d  |  %s    |  %d   |  %d  |  %d  | %s\n",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].idade,lu->lu[i].contatoTelefonico,lu->lu[i].vacinaID,lu->lu[i].quantidadeDosesAdmn,lu->lu[i].centroID,dataUltimaDose);
     }
     
 }
@@ -65,6 +82,7 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
         {
             if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
             {
+                
                 printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,lu->lu[j].dataUltimaDosagem);
             }
             
@@ -120,7 +138,6 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar)
         if (lu->lu[i].numeroDeUtente == idAEditar)
         {
             printf("Insira o novo nome do Utente:\n");
-            while (getchar() != '\n');
             strcpy(lu->lu[i].nome,"\0");
             fgets(lu->lu[i].nome, 101, stdin);
             lu->lu[i].nome[strlen(lu->lu[i].nome) -1 ] = '\0';
@@ -138,7 +155,6 @@ void alterarContacto(ListaUtentes *lu, int idAEditar)
         if (lu->lu[i].numeroDeUtente == idAEditar)
         {
             printf("Insira o novo contacto telefonico do Utente:\n");
-            while (getchar() != '\n');
             strcpy(lu->lu[i].contatoTelefonico,"\0");
             fgets(lu->lu[i].contatoTelefonico, 101, stdin);
             lu->lu[i].contatoTelefonico[strlen(lu->lu[i].contatoTelefonico) -1 ] = '\0';

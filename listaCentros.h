@@ -17,7 +17,7 @@ void alterarNomeCentro(ListaCentros *lc,int idAEditar);
 
 int procurarIDNaListaCentros(ListaCentros *lc, int idAProcurar);
 
-void listarCentros(ListaCentros lc);
+void listarCentros(ListaCentros *lc);
 
 void gravarDadosListaCentros(ListaCentros lc);
 

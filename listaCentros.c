@@ -13,12 +13,14 @@ void inserirCentro(ListaCentros *lc) {
     lc->numeroCentros++;
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
 
-void listarCentros(ListaCentros lc) {
+void listarCentros(ListaCentros *lc) {
     printf(">>>           LISTA DE CENTROS     <<<\n\n");
     printf("ID Centro |           Designacao         \n");
-    //Listar Centros
-    for (int i = 0; i < lc.numeroCentros; i++) {
-        printf("%d    |  %s   ",lc.centros[i].centroID,lc.centros[i].nomeCentro);
+    for (int i = 0; i < lc->numeroCentros; i++) {
+        int id = lc->centros[i].centroID;
+        char nome[100];
+        strcpy(nome,lc->centros[i].nomeCentro);
+        printf("     %d    |%20s   \n",id,nome);
     }
 }
 
@@ -70,7 +72,6 @@ void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
         if (lc->centros[i].centroID == idAEditar)
         {
             printf("Insira o novo Nome de Centro:\n");
-            while (getchar() != '\n');
             strcpy(lc->centros[i].nomeCentro,"\0");
             fgets(lc->centros[i].nomeCentro,101, stdin);
             lc->centros[i].nomeCentro[strlen(lc->centros[i].nomeCentro) -1 ] = '\0';
@@ -86,7 +87,6 @@ void alterarMoradaCentro(ListaCentros *lc, int idAEditar) {
     int indiceID = procurarIDNaListaCentros(lc, idAEditar);
     strcpy(lc->centros[indiceID].morada,"\0");
     printf("Insira a nova Morada de Centro:\n");
-    while (getchar() != '\n');
     fgets(lc->centros[indiceID].morada,101, stdin);
     lc->centros[indiceID].morada[strlen(lc->centros[indiceID].morada) -1 ] = '\0';
 }

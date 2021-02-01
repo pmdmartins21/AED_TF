@@ -9,7 +9,7 @@ typedef struct sListaUtentes
     
 } ListaUtentes;
 
-void inserirUtente(ListaUtentes *lu);
+void inserirUtente(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv);
 int procurarIDNaLista(ListaUtentes *lu, int idAProcurar);
 void eliminarUtente(ListaUtentes *lu);
 

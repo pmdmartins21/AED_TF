@@ -4,15 +4,19 @@
 
 
 void inserirVacina(ListaVacinas *lv){
-    Vacina v = criarVacina(lv->numeroVacinas);
+    Vacina v = criarVacina();
+    v.idVacina = (lv->numeroVacinas + 1);
     lv->lv[lv->numeroVacinas] = v;
     lv->numeroVacinas++;
 }
 
-void listarVacinas(ListaVacinas lv){
-    for (int i = 0; i< lv.numeroVacinas; i++) 
+void listarVacinas(ListaVacinas *lv){
+    for (int i = 0; i< lv->numeroVacinas; i++) 
         {
-            printf("%d -> %s \n", lv.lv[i].idVacina, lv.lv[i].designacao);
+            int id = lv->lv[i].idVacina;
+            char nome[100];
+            strcpy(nome,lv->lv[i].designacao);
+            printf("ID: %d ->NOME: %20s \n", id, nome);
         }
 }
 
@@ -51,7 +55,6 @@ void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
         if (lv->lv[i].idVacina == idAEditar)
         {
             printf("Insira o novo nome da vacina:\n");
-            while (getchar() != '\n');
             strcpy(lv->lv[i].designacao,"\0");
             fgets(lv->lv[i].designacao, 101, stdin);
             lv->lv[i].designacao[strlen(lv->lv[i].designacao) -1 ] = '\0';
