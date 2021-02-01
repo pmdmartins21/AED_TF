@@ -12,6 +12,9 @@ typedef struct sListaUtentes
 void inserirUtente(ListaUtentes *lu);
 int procurarIDNaLista(ListaUtentes *lu, int idAProcurar);
 void eliminarUtente(ListaUtentes *lu);
+
+void listarUtentes(ListaUtentes *lu);
+
 void editarUtente(ListaUtentes *lu, int idAEditar);
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar);
 void alterarContacto(ListaUtentes *lu, int idAEditar);

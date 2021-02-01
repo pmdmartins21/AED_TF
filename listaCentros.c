@@ -1,5 +1,4 @@
 #include "listaCentros.h"
-#include "centroVacinacao.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -7,18 +6,19 @@
 
 // Inserir, editar e inactivar centros de vacinação;
 
-void inserirCentro(ListaCentros *lc, CentroVacinacao cv) {
+void inserirCentro(ListaCentros *lc) {
+    CentroVacinacao cv = criarCentro();
+    cv.centroID = (lc->numeroCentros+1);
     lc->centros[lc->numeroCentros] = cv;
     lc->numeroCentros++;
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
 
-void listarCentros(ListaCentros *lc) {
+void listarCentros(ListaCentros lc) {
     printf(">>>           LISTA DE CENTROS     <<<\n\n");
     printf("ID Centro |           Designacao         \n");
     //Listar Centros
-    for (int i = 0; i < lc->numeroCentros; i++) {
-        printf("%d    |  %s   ",lc->centros[i].centroID,lc->centros[i].nomeCentro);
-
+    for (int i = 0; i < lc.numeroCentros; i++) {
+        printf("%d    |  %s   ",lc.centros[i].centroID,lc.centros[i].nomeCentro);
     }
 }
 

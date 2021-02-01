@@ -1,11 +1,15 @@
 #include "listaUtentes.h"
-#include "listaVacinas.h"
-#include "utente.h"
 #include <stdio.h>
 #include <string.h>
 
-
-
+void listarUtentes(ListaUtentes *lu) {
+    printf("N.UTENTE |       NOME       |  IDADE | TELEFONE | Vacina |  DOSES | CENTRO VAC. | DATA ULTIMA DOSE");
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        printf(" %d  | %15s| %d  |  %s    |  %d   |  %d  |  %d  | %s",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].idade,lu->lu[i].contatoTelefonico,lu->lu[i].vacinaID,lu->lu[i].quantidadeDosesAdmn,lu->lu[i].centroID,lu->lu[i].dataUltimaDosagem);
+    }
+    
+}
 
 void inserirUtente(ListaUtentes *lu)
 {
@@ -23,7 +27,7 @@ int procurarIDNaLista(ListaUtentes *lu, int idAProcurar)
             return i;
         }
     }
-    return NULL;
+    return -1;
 }
 
 void eliminarUtente(ListaUtentes *lu)
@@ -113,7 +117,7 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar)
 
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        if (lu->lu[i].nome == idAEditar)
+        if (lu->lu[i].numeroDeUtente == idAEditar)
         {
             printf("Insira o novo nome do Utente:\n");
             while (getchar() != '\n');
@@ -131,7 +135,7 @@ void alterarContacto(ListaUtentes *lu, int idAEditar)
 
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        if (lu->lu[i].contatoTelefonico == idAEditar)
+        if (lu->lu[i].numeroDeUtente == idAEditar)
         {
             printf("Insira o novo contacto telefonico do Utente:\n");
             while (getchar() != '\n');
@@ -149,7 +153,7 @@ void alterarIdadeUtente(ListaUtentes *lu, int idAEditar)
     int novaIdade;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        if (lu->lu[i].idade == idAEditar)
+        if (lu->lu[i].numeroDeUtente == idAEditar)
         {
             printf("Insira a idade do Utente:\n");
             scanf("%d", &novaIdade);
@@ -193,19 +197,19 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
             switch(op)
             {
                 case 1: 
-                    alterarNomeUtente(&lu, idAEditar);
+                    alterarNomeUtente(lu, idAEditar);
                     break;
                 
                 case 2: 
-                    alterarNumeroUtente(&lu, idAEditar);
+                    alterarNumeroUtente(lu, idAEditar);
                     break;
                 
                 case 3: 
-                    alterarIdadeUtente(&lu, idAEditar);
+                    alterarIdadeUtente(lu, idAEditar);
                     break;
                 
                 case 4: 
-                    alterarContacto(&lu, idAEditar);
+                    alterarContacto(lu, idAEditar);
                     break;
                 
                 case 5:

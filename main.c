@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
-#include "listaCentros.h"
-#include "listaVacinas.h"
 #include "listaUtentes.h"
 
-void menuCentros(ListaCentros *lc , int idCentroAtivo);
+void menuCentros(ListaCentros *lc);
 void menuUtentes(ListaUtentes *lu);
 void menuVacinas(ListaVacinas *lv);
 
@@ -17,29 +15,38 @@ int main(int argc, char const *argv[])
     ListaVacinas lv;
     lv.numeroVacinas = 0;
     ListaCentros lc;
+    lc.numeroCentros = 0;
     int op=0;
     ListaUtentes lu;
+    lu.numeroUtentes = 0;
     CentroVacinacao registos[100];
-    int op=0;
+    int op1=0;
     int centroID;
 
     //Metodo entrada?
-    printf(">>> Por favor escolha o seu Centro <<<\n\n");
-    listarCentros(&lc);
-    scanf("%d",&centroID);
-    while (procurarIDNaListaCentros(&lc,centroID) < 0)
+    if (lc.numeroCentros != 0)
     {
-        printf("ID incorrecto, por favor introduza outro:\n");
+        printf(">>> Por favor escolha o seu Centro <<<\n\n");
+        listarCentros(lc);
         scanf("%d",&centroID);
+
+        while (procurarIDNaListaCentros(&lc,centroID) < 0)
+        {
+            printf("ID incorrecto, por favor introduza outro:\n");
+            scanf("%d",&centroID);
+        }
     }
     
-    while(op!=4)
+    
+    
+    
+    while(op1!=9)
     {
         printf("************ BEM VINDO!! ************\n\n\n");
         printf(">>> DASHBOARD <<<\n\n");
-        printf("NÚMERO DE VACINAS ADMNISTRADAS\n");
-        printf("MÉDIA DE IDADES DOS UTENTES VACINADOS\n");
-        printf("VACINA %s (POR VACINA): NÚMERO DE UTENTES VACINADOS\n");
+        printf("NUMERO DE VACINAS ADMNISTRADAS\n");
+        printf("MEDIA DE IDADES DOS UTENTES VACINADOS\n");
+        printf("VACINA %s (POR VACINA): NUMERO DE UTENTES VACINADOS\n");
         printf("1 - CENTROS\n\n");
         printf("2 - UTENTES\n\n");
         printf("3 - VACINAS\n\n");
@@ -48,17 +55,17 @@ int main(int argc, char const *argv[])
         printf("9 - SAIR\n\n");
         printf("OPCAO: ");
 
-        scanf("%d", &op);
+        scanf("%d", &op1);
         fflush(stdin);
-        switch(op)
+        switch(op1)
         {
             case 1:
-                menuCentros(&lc, centroID);
-                void gravarDadosListaCentros(lc);
+                menuCentros(&lc);
+                gravarDadosListaCentros(lc);
                 break;
             case 2:     
                 menuUtentes(&lu);
-                void gravarDadosListaUtentes(lu);
+                gravarDadosListaUtentes(lu);
                 break;
             case 3: 
                 menuVacinas(&lv);
@@ -82,10 +89,10 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void menuCentros(ListaCentros *lc , int idCentroAtivo) {
+void menuCentros(ListaCentros *lc) {
     int idAManipular;
-    int op = 0;
-    while(op!=4)
+    int op2 = 0;
+    while(op2!=4)
         {
             printf(">>> MENU CENTROS DE VACINACAO %s<<<\n\n"); //inserir atual com funcao search by id ??
             printf("1 - Inserir novo Centro \n"); 
@@ -94,23 +101,20 @@ void menuCentros(ListaCentros *lc , int idCentroAtivo) {
             printf("4 - Sair\n\n");
             printf(">>>     ESCOLHA A OPCAO A ALTERAR  <<<\n");
 
-            scanf("%d", &op);
+            scanf("%d", &op2);
             fflush(stdin);
-            switch(op)
+            switch(op2)
             {
                 case 1: 
-                    CentroVacinacao cv = criarCentro();
-                    inserirCentro(lc, cv);
+                    inserirCentro(lc);
                     break;
                 case 2:    
-                    listarCentros(lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     editarCentro(lc, idAManipular);
                     break;
                 
                 case 3: 
-                    listarCentros(lc);
                     printf("indique o ID do Centro");
                     scanf("%d", &idAManipular);
                     inactivarCentro(lc, idAManipular);
@@ -131,8 +135,8 @@ void menuCentros(ListaCentros *lc , int idCentroAtivo) {
 void menuUtentes(ListaUtentes *lu) 
 {
     int numeroAEditar;
-    int op = 0;
-    while(op!=6)
+    int op3 = 0;
+    while(op3!=5)
         {
             printf(">>> MENU UTENTES %s<<<\n\n"); 
             printf("1 - Inserir Utente\n"); 
@@ -141,41 +145,40 @@ void menuUtentes(ListaUtentes *lu)
             printf("4 - Eliminar Utente\n");            
             printf("5 - Voltar\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
-            scanf("%d", &op);
+            scanf("%d", &op3);
             fflush(stdin);
-            switch(op){
+            switch(op3){
                 case 1:     
-                    inserirUtente(&lu);
+                    inserirUtente(lu);
                     break;
                 
                 case 2: 
                     editarUtente;
                     printf("Qual o numero do Utente que deseja editar?");
                     scanf("%d", &numeroAEditar);
-                    editarUtente(&lu, numeroAEditar);
+                    editarUtente(lu, numeroAEditar);
                     break;
                 
                 case 3: 
-                    listarUtente(&lu);
+                    listarUtentes(lu);
                     break;
     
                 case 4:
-                    eliminarUtente(&lu);
+                    eliminarUtente(lu);
                 break;
-                
+                case 5:
+                break;
                 default: 
-                    printf("Opcao errada");
+                    printf("Opcao errada\n");
                     break;
-                
-
             }
         }
 }
 
 void menuVacinas(ListaVacinas *lv) {
     int idAInativar;
-    int opcao = 0;
-    while (opcao != 5)
+    int op4 = 0;
+    while (op4 != 5)
     {
         printf(">>> MENU VACINAS <<<\n\n");
         printf("1 - Inserir nova vacina\n"); 
@@ -185,28 +188,28 @@ void menuVacinas(ListaVacinas *lv) {
         printf("5 - Sair\n\n");
         printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
 
-        scanf("%d", &opcao);
+        scanf("%d", &op4);
         fflush(stdin);
 
-        switch (opcao)
+        switch (op4)
         {
             case 1:
-                inserirVacina(&lv);
+                inserirVacina(lv);
                 break;
             case 2:
-                listarVacina();
+                listarVacinas(lv);
                 printf("Qual o id da vacina a editar?");
                 scanf("%d", &idAInativar);
-                editarVacina(&lv, idAInativar);
+                editarVacinas(lv, idAInativar);
                 break;
             case 3:
-                listarVacina();
+                listarVacinas(lv);
                 printf("Qual o id da vacina a inativar?");
                 scanf("%d", &idAInativar);
-                inativarVacina(&lv, idAInativar);
+                inativarVacina(lv, idAInativar);
                 break;
             case 4:
-                listarVacina();
+                listarVacinas(lv);
                 break;
             case 5:
 

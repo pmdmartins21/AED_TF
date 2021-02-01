@@ -9,36 +9,16 @@ void inserirVacina(ListaVacinas *lv){
     lv->numeroVacinas++;
 }
 
-int listarVacinas(ListaVacinas lv){
-    int idVacina;
-    for (int i = 0; i< lv.numeroVacinas; i++) {
-        printf("%d -> %s \n", lv.lv[i].idVacina, lv.lv[i].designacao);
-    }
-    scanf("%d", &idVacina);
-
-    //falta controlar se a opcao inserida
-    return idVacina;
-}
-
-void procurarVacina(ListaVacinas *lv, int vacinaId){
-    for (int i = 0; i < lv->numeroVacinas; i++) {
-        if (lv->lv[i].idVacina == vacinaId) {
-            return i;
-            //menu
+void listarVacinas(ListaVacinas *lv){
+    char *c;
+    int numero = 0;
+    for (int i = 0; i< lv->numeroVacinas; i++) 
+        {
+            strcpy(c,lv->lv[i].designacao);
+            numero = lv->lv[i].idVacina;
+            printf("%d -> %s \n", numero, c);
         }
-    }
-    return NULL;
-} 
-
-/*
-void getVacinaById(ListaVacinas *lv, int vacinaID){
-    for(int i = 0; i < lv.numeroVacinas; i++ ){
-        if(lv.lv[i].idVacina == vacinaID) {
-            printf("Designação: %s", lv.lv[i].designacao);
-        }
-    }
 }
-*/
 
 void inativarVacina(ListaVacinas *lv, int idAInativar) {
     for (int i = 0; i < lv->numeroVacinas; i++)
@@ -68,34 +48,7 @@ void carregarDadosListaVacinas(ListaVacinas *lv){
     fclose(ficheiro);
 }
 
-void editarVacinas(ListaVacinas *lv, int idAEditar) {
-    int op = 0;
-    while(op != 4) {
-        printf(">>> Edição de Vacinas <<<\n\n");
-        printf("1 - Nome da Vacina\n"); 
-        printf("2 - Número de doses\n");
-        printf("3 - Tempo entre vacinas\n");
-        printf("4 - Sair\n\n");
-        printf(">>>ESCOLHA A OPÇÃO A ALTERAR<<<\n");
 
-        scanf("%d", &op);
-        fflush(stdin);
-        switch(op) {
-            case 1: 
-                editarNomeVacina(&lv, idAEditar);
-                break;
-            case 2:      
-                editarNumeroDoses(&lv, idAEditar);
-                break;
-            case 3: 
-                editarTempoVacinas(&lv, idAEditar);
-                break;
-            default: 
-                printf("Opção errada");
-                break;
-        }
-    }
-}
 
 void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
 
@@ -176,5 +129,34 @@ void listarVacinasAlfabeticamente(ListaVacinas *lv) {
     for (int i = 0; i < lv->numeroVacinas; i++)
     {
         puts(lv->lv[i].designacao);
+    }
+}
+
+void editarVacinas(ListaVacinas *lv, int idAEditar) {
+    int op = 0;
+    while(op != 4) {
+        printf(">>> Edição de Vacinas <<<\n\n");
+        printf("1 - Nome da Vacina\n"); 
+        printf("2 - Número de doses\n");
+        printf("3 - Tempo entre vacinas\n");
+        printf("4 - Sair\n\n");
+        printf(">>>ESCOLHA A OPÇÃO A ALTERAR<<<\n");
+
+        scanf("%d", &op);
+        fflush(stdin);
+        switch(op) {
+            case 1: 
+                editarNomeVacina(lv, idAEditar);
+                break;
+            case 2:      
+                editarNumeroDosesVacina(lv, idAEditar);
+                break;
+            case 3: 
+                editarTempoEntreVacina(lv, idAEditar);
+                break;
+            default: 
+                printf("Opção errada");
+                break;
+        }
     }
 }
