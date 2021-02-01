@@ -2,15 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-void listarUtentes(ListaUtentes *lu) {
-    printf("N.UTENTE |       NOME       |  IDADE | TELEFONE | Vacina |  DOSES | CENTRO VAC. | DATA ULTIMA DOSE");
-    for (int i = 0; i < lu->numeroUtentes; i++)
-    {
-        printf(" %d  | %15s| %d  |  %s    |  %d   |  %d  |  %d  | %s",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].idade,lu->lu[i].contatoTelefonico,lu->lu[i].vacinaID,lu->lu[i].quantidadeDosesAdmn,lu->lu[i].centroID,lu->lu[i].dataUltimaDosagem);
-    }
-    
-}
-
 void inserirUtente(ListaUtentes *lu)
 {
     Utente u = criarUtente(lu->numeroUtentes);
@@ -51,6 +42,15 @@ void eliminarUtente(ListaUtentes *lu)
     printf("\nLista depois de remover:\nQuantidade: %d\nMembros:\n", lu->numeroUtentes);
     for(int i = 0; i< lu->numeroUtentes; i++) printf("%d\n", lu->lu[i].numeroDeUtente);        
         
+    
+}
+
+void listarUtentes(ListaUtentes *lu) {
+    printf("N.UTENTE |       NOME       |  IDADE | TELEFONE | Vacina |  DOSES | CENTRO VAC. | DATA ULTIMA DOSE");
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        printf(" %d  | %15s| %d  |  %s    |  %d   |  %d  |  %d  | %s",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].idade,lu->lu[i].contatoTelefonico,lu->lu[i].vacinaID,lu->lu[i].quantidadeDosesAdmn,lu->lu[i].centroID,lu->lu[i].dataUltimaDosagem);
+    }
     
 }
 
