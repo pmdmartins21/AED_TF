@@ -107,13 +107,13 @@ void menuCentros(ListaCentros *lc) {
                     inserirCentro(lc);
                     break;
                 case 2:    
-                    printf("indique o ID do Centro");
+                    printf("indique o ID do Centro\n");
                     scanf("%d", &idAManipular);
                     editarCentro(lc, idAManipular);
                     break;
                 
                 case 3: 
-                    printf("indique o ID do Centro");
+                    printf("indique o ID do Centro\n");
                     scanf("%d", &idAManipular);
                     inactivarCentro(lc, idAManipular);
                     break;
@@ -136,7 +136,7 @@ void menuUtentes(ListaUtentes *lu)
     int op3 = 0;
     while(op3!=5)
         {
-            printf(">>> MENU UTENTES %s<<<\n\n"); 
+            printf(">>> MENU UTENTES <<<\n\n"); 
             printf("1 - Inserir Utente\n"); 
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
@@ -152,7 +152,7 @@ void menuUtentes(ListaUtentes *lu)
                 
                 case 2: 
                     editarUtente;
-                    printf("Qual o numero do Utente que deseja editar?");
+                    printf("Qual o numero do Utente que deseja editar?\n");
                     scanf("%d", &numeroAEditar);
                     editarUtente(lu, numeroAEditar);
                     break;
@@ -195,12 +195,12 @@ void menuVacinas(ListaVacinas *lv) {
                 inserirVacina(lv);
                 break;
             case 2:
-                printf("Qual o id da vacina a editar?");
+                printf("Qual o id da vacina a editar?\n");
                 scanf("%d", &idAInativar);
                 editarVacinas(lv, idAInativar);
                 break;
             case 3:
-                printf("Qual o id da vacina a inativar?");
+                printf("Qual o id da vacina a inativar?\n");
                 scanf("%d", &idAInativar);
                 inativarVacina(lv, idAInativar);
                 break;

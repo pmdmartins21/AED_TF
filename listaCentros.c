@@ -65,7 +65,6 @@ void carregarDadosListaCentros(ListaCentros *lc)
 
 
 void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
-
     for (int i = 0; i < lc->numeroCentros; i++)
     {
         if (lc->centros[i].centroID == idAEditar)
@@ -114,9 +113,10 @@ void alterarEstado(ListaCentros *lc, int idAEditar){
 
 void editarCentro(ListaCentros *lc, int idAEditar) {
     int op6 = 0;
-    while(op6!=5)
+    
+   //while(op6!=5) 
         {
-            printf(">>> Edicao de Centros de Vacinacao %s<<<\n\n"); //inserir estado atual com funcao search by id ??
+            printf(">>> Edicao de Centros de Vacinacao <<<\n\n"); //inserir estado atual com funcao search by id ??
             printf("1 - Nome do Centro \n"); 
             printf("2 - Morada\n");
             printf("3 - ID do Centro\n");
@@ -130,6 +130,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
                 case 1: {
                     alterarNomeCentro(lc, idAEditar);
                     break;
+
                 }
                 case 2: {      
                     alterarMoradaCentro(lc, idAEditar);
@@ -152,6 +153,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
                 }
 
             }
+            printf("PASSEI AQUI %d", op6);
         }
 }
 
