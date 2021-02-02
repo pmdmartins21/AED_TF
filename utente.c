@@ -16,6 +16,12 @@ Utente criarUtente()
     printf("Contato Telefonico:\n");
     fgets(u.contatoTelefonico,21, stdin);
     u.contatoTelefonico[strlen(u.contatoTelefonico) -1 ] = '\0';
+    u.dataUltimaDosagem.dias = 0;
+    u.dataUltimaDosagem.meses = 0;
+    u.dataUltimaDosagem.ano = 0;
+    u.quantidadeDosesAdmn = 0;
+    u.centroID = 0;
+    u.vacinaID = 0;
     return u;
 }
 

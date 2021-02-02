@@ -12,27 +12,28 @@ void menuVacinas(ListaVacinas *lv);
 int main(int argc, char const *argv[])
 {
     setlocale(LC_ALL, "Portuguese");
+
     ListaVacinas lv;
-    //carregarDadosListaVacinas(&lv);
     lv.numeroVacinas = 0;
+    carregarDadosListaVacinas(&lv);
     ListaCentros lc;
-    //carregarDadosListaCentros(&lc);
     lc.numeroCentros = 0;
-    int op=0;
+    carregarDadosListaCentros(&lc);
     ListaUtentes lu;
-    //carregarDadosListaUtentes(&lu);
     lu.numeroUtentes = 0;
-    //CentroVacinacao registos[100]; para que é isto?
+    carregarDadosListaUtentes(&lu);
+    
+
+    int op=0;
     int op1=0;
     int centroID;
     int vacinasAdministradas = 0;
-    float mediaIdadeUtentesVacinados = 0.0;
+    float mediaIdadeUtentesVacinados = 0;
 
     while(op1!=9)
     {
         vacinasAdministradas = totalVacinasAdministradas(&lu);
         mediaIdadeUtentesVacinados = mediaIdadesVacinados(&lu);
-
 
         printf("************ BEM VINDO!! ************\n\n\n");
 
@@ -41,6 +42,7 @@ int main(int argc, char const *argv[])
         printf("MEDIA DE IDADES DOS UTENTES VACINADOS: %.2f\n", mediaIdadeUtentesVacinados);
         numeroUtentesVacinadosporVacinas(&lu, &lv); // lista utentes vacinados por vacinas
         printf(">>> DASHBOARD <<<\n\n");
+        
         printf("1 - CENTROS\n");
         printf("2 - UTENTES\n");
         printf("3 - VACINAS\n");
@@ -56,16 +58,16 @@ int main(int argc, char const *argv[])
         {
             case 1:
                 menuCentros(&lc);
-                //gravarDadosListaCentros(lc);
+                gravarDadosListaCentros(lc);
                 break;
             case 2:     
                 menuUtentes(&lu, &lc, &lv);
-                //gravarDadosListaUtentes(lu);
+                gravarDadosListaUtentes(lu);
                 break;
             case 3: 
                 listarVacinas(&lv);
                 menuVacinas(&lv);
-                //gravarDadosListaVacinas(lv);
+                gravarDadosListaVacinas(lv);
                 break;
             case 4:
                 listarUtentesPorVacinas(&lu, &lv);
@@ -155,7 +157,6 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
                     break;
                 
                 case 2: 
-                    editarUtente;
                     printf("Qual o numero do Utente que deseja editar?\n");
                     scanf("%d", &numeroAEditar);
                     editarUtente(lu, numeroAEditar);

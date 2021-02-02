@@ -11,13 +11,21 @@ void inserirVacina(ListaVacinas *lv){
 }
 
 void listarVacinas(ListaVacinas *lv){
+    printf("ID VACINA |     DESIGNACAO    |  N. DOSES TOTAL | TEMPO ENTRE VACINAS(MESES)|   ATIVA \n");
     for (int i = 0; i< lv->numeroVacinas; i++) 
         {
             int id = lv->lv[i].idVacina;
             char nome[100];
+            char ativo[20];
+            if (lv->lv[i].ativo ==1 )
+            {
+                strcpy(ativo,"ATIVO");
+            }else strcpy(ativo,"INATIVO");
             strcpy(nome,lv->lv[i].designacao);
-            printf("ID: %d ->NOME: %20s \n", id, nome);
+
+            printf("     %d    |%19s|        %d        |               %d           | %s\n", id, nome, lv->lv[i].nDoses,lv->lv[i].tempoEntreVacinas, ativo);
         }
+
 }
 
 void inativarVacina(ListaVacinas *lv, int idAInativar) {
@@ -25,7 +33,14 @@ void inativarVacina(ListaVacinas *lv, int idAInativar) {
     {
         if (lv->lv[i].idVacina == idAInativar)
         {
-            lv->lv[i].ativo = 0;
+            if (lv->lv[i].ativo == 1)
+            {
+                lv->lv[i].ativo = 0;
+            }
+            if (lv->lv[i].ativo == 0)
+            {
+                lv->lv[i].ativo = 1;
+            }
         }
     }
 }
@@ -58,10 +73,10 @@ void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
             strcpy(lv->lv[i].designacao,"\0");
             fgets(lv->lv[i].designacao, 101, stdin);
             lv->lv[i].designacao[strlen(lv->lv[i].designacao) -1 ] = '\0';
-        }else{
-            printf("ID não encontrado");
-        }
+            break;
+        }   
     }
+    printf("ID não encontrado");
 }
 
 void editarIdVacina(ListaVacinas *lv, int idAEditar) {
@@ -73,10 +88,10 @@ void editarIdVacina(ListaVacinas *lv, int idAEditar) {
             printf("Insira o novo id da vacina:\n");
             scanf("%d", &novoID);
             lv->lv[i].idVacina = novoID;
-        }else{
-            printf("ID não encontrado");
-        }
+            break;
+        } 
     }
+    printf("ID não encontrado");
 }
 
 void editarNumeroDosesVacina(ListaVacinas *lv, int idAEditar) {
@@ -88,10 +103,10 @@ void editarNumeroDosesVacina(ListaVacinas *lv, int idAEditar) {
             printf("Insira o novo número de doses da vacina:\n");
             scanf("%d", &novoNumeroDoses);
             lv->lv[i].nDoses = novoNumeroDoses;
-        }else{
-            printf("ID não encontrado");
-        }
+        break;
+        } 
     }
+    printf("ID não encontrado");
 }
 
 void editarTempoEntreVacina(ListaVacinas *lv, int idAEditar) {
@@ -103,10 +118,10 @@ void editarTempoEntreVacina(ListaVacinas *lv, int idAEditar) {
             printf("Insira o novo tempo entre vacinas:\n");
             scanf("%d", &novoTempoEntreVacinas);
             lv->lv[i].idVacina = novoTempoEntreVacinas;
-        }else{
-            printf("ID não encontrado");
-        }
+            break;
+        } 
     }
+    printf("ID não encontrado");
 }
 
 void listarVacinasAlfabeticamente(ListaVacinas lv) {
@@ -126,9 +141,9 @@ void listarVacinasAlfabeticamente(ListaVacinas lv) {
     for (int i = 0; i < lv.numeroVacinas; i++)
     {
         puts(strupr(lv.lv[i].designacao));
-        printf("===================================");       
-        printf("===================================");       
-    }
+              
+    }      
+    printf("===================================\n\n\n"); 
 }
 
 void editarVacinas(ListaVacinas *lv, int idAEditar) {

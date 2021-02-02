@@ -12,6 +12,7 @@ Vacina criarVacina(){
     scanf("%d", &v.nDoses);
     printf("Tempo de espera entre vacinas (meses):\n");
     scanf("%d", &v.tempoEntreVacinas);
+    v.ativo = 1; //ativa a vacina qd a cria
     return v;
 }
 

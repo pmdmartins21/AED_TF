@@ -61,40 +61,42 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
     for (int i = 0; i < lv->numeroVacinas; i++) // correr lista vacinas
     {
         char dataUltimaDose[20];
-        printf("===== VACINA %d =====\n", lv->lv[i].idVacina);
-        printf("N. UTENTE   |     NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
-        
+        printf("===== VACINA %s =====\n", lv->lv[i].designacao);
+        printf("N. UTENTE|          NOME          |  IDADE |  TELEFONE  | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
+                   
         for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
         {
             if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
             {
                 sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
-                printf("%d  |%20s | %d  |  %s  |  %d  |    %s\n",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
+                printf("%d |%-23s |   %d   |%12s|           %d         |            %s\n",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
             }
             
         }
             
     }
+    printf("===============================\n\n\n");
 }
 
 void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
     for (int i = 0; i < lc->numeroCentros; i++) // correr lista de centros
         {
             
-            printf("===== Centro %s =====", lc->centros[i].nomeCentro);
-            printf("N. UTENTE  |      NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
+            printf("===== Centro %s =====\n", lc->centros[i].nomeCentro);
+            printf("N. UTENTE|          NOME          |  IDADE |  TELEFONE  | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
             for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
             {
                 if (lu->lu[j].centroID == i+1)
                 {
                     char dataUltimaDose[20];
                     sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
-                    printf("%d   |   %s | %d  |  %s  |  %d  |    %s",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
+                    printf("%d |%-24s |   %d   |%12s|           %d        |            %s\n",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
                 }
                 
             }
             
         }
+        printf("===============================\n\n\n");
 }
 
 void gravarDadosListaUtentes(ListaUtentes lu) 
@@ -158,7 +160,6 @@ void vacinarUtente(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc) {
 
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar) 
 {
-
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
         if (lu->lu[i].numeroDeUtente == idAEditar)
@@ -167,10 +168,10 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar)
             strcpy(lu->lu[i].nome,"\0");
             fgets(lu->lu[i].nome, 101, stdin);
             lu->lu[i].nome[strlen(lu->lu[i].nome) -1 ] = '\0';
-        }else{
-            printf("Numero do Utente nao encontrado não encontrado");
+            break;
         }
     }
+    printf("Numero do Utente nao encontrado não encontrado");
 }
 
 void alterarContacto(ListaUtentes *lu, int idAEditar) 
@@ -184,10 +185,10 @@ void alterarContacto(ListaUtentes *lu, int idAEditar)
             strcpy(lu->lu[i].contatoTelefonico,"\0");
             fgets(lu->lu[i].contatoTelefonico, 101, stdin);
             lu->lu[i].contatoTelefonico[strlen(lu->lu[i].contatoTelefonico) -1 ] = '\0';
-        }else{
-            printf("Numero do Utente nao encontrado não encontrado");
+            break;
         }
     }
+    printf("Numero do Utente nao encontrado não encontrado");
 }
 
 void alterarIdadeUtente(ListaUtentes *lu, int idAEditar) 
@@ -200,10 +201,10 @@ void alterarIdadeUtente(ListaUtentes *lu, int idAEditar)
             printf("Insira a idade do Utente:\n");
             scanf("%d", &novaIdade);
             lu->lu[i].idade = novaIdade;
-        }else{
-            printf("Numero do Utente nao encontrado não encontrado");
+        break;
         }
     }
+    printf("Numero do Utente nao encontrado não encontrado");
 }
 
 void alterarNumeroUtente(ListaUtentes *lu, int idAEditar) 
@@ -216,10 +217,10 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar)
             printf("Insira o numero do Utente:\n");
             scanf("%d", &novoNumeroUtente);
             lu->lu[i].numeroDeUtente = novoNumeroUtente;
-        }else{
-            printf("Numero do Utente nao encontrado não encontrado");
+        break;
         }
     }
+    printf("Numero do Utente nao encontrado não encontrado");
 }
 
 void editarUtente(ListaUtentes *lu, int idAEditar) 
@@ -268,31 +269,43 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
 }
 
 int totalVacinasAdministradas (ListaUtentes *lu) {
+    int totalVacinas = 0;
+    int vacinaUser;
     if (lu->numeroUtentes == 0)
     {
-        return 0;
+        return totalVacinas;
     }
-    int totalVacinas = 0;
+    
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        totalVacinas =+ lu->lu[i].quantidadeDosesAdmn;
-    }
+        int vacinaUser =  lu->lu[i].quantidadeDosesAdmn;
+        totalVacinas = totalVacinas + vacinaUser;
+    }   
     return totalVacinas;
 }
 
 float mediaIdadesVacinados(ListaUtentes *lu) {
+    float media;
+    int totalIdade = 0, idadeUser, numeroUtentesVacinados = 0;
     if (lu->numeroUtentes == 0)
     {
         return 0.0f;
     }
-    
-    float media;
-    int totalIdade = 0;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
-        totalIdade =+ lu->lu[i].idade;
+        if (lu->lu[i].quantidadeDosesAdmn > 0)
+        {
+            idadeUser = lu->lu[i].idade;
+            totalIdade = totalIdade + idadeUser;
+            numeroUtentesVacinados++;
+        } 
     }
-    media = totalIdade*1.0/lu->numeroUtentes;
+    if (numeroUtentesVacinados == 0)
+    {
+        return 0;
+    }
+    
+    media = totalIdade*1.0/numeroUtentesVacinados;
     return media;
 }
 
@@ -306,12 +319,10 @@ void numeroUtentesVacinadosporVacinas(ListaUtentes *lu, ListaVacinas *lv) {
            if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
            {
                counterUtentes++;
-               printf("===== VACINA %s | UTENTES VACINADOS: %d=====\n", lv->lv[i].designacao,counterUtentes);
            }
            
-            
         }
-            
+        printf("===== VACINA %s | UTENTES VACINADOS: %d=====\n", lv->lv[i].designacao,counterUtentes);
     }
 }
 
