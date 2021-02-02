@@ -10,7 +10,7 @@ Vacina criarVacina(){
     v.designacao[strlen(v.designacao) -1 ] = '\0';
     printf("Numero de doses no total:\n");
     scanf("%d", &v.nDoses);
-    printf("Tempo de espera entre vacinas (semanas):\n");
+    printf("Tempo de espera entre vacinas (meses):\n");
     scanf("%d", &v.tempoEntreVacinas);
     return v;
 }

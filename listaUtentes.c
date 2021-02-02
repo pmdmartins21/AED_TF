@@ -5,21 +5,6 @@
 void inserirUtente(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
 {
     Utente u = criarUtente();
-    listarCentros(lc);
-    printf("Indique o ID do centro onde foi vacinado\n");
-    scanf("%d", &u.centroID);
-    listarVacinas(lv);
-    printf("Indique o ID da vacina administrada\n");
-    scanf("%d", &u.vacinaID);
-    u.quantidadeDosesAdmn = 1; //ao criar estamos a assumir que está a receber a primeira dose
-    printf("Indique a data de hoje: Ex: 21/01/2020\n");
-    printf("Dia: ");
-    scanf("%d", &u.dataUltimaDosagem.dias);
-    printf("Mes: ");
-    scanf("%d", &u.dataUltimaDosagem.meses);
-    printf("Ano: ");
-    scanf("%d", &u.dataUltimaDosagem.ano);
-    u.numeroDeUtente = (lu->numeroUtentes + 1);
     lu->lu[lu->numeroUtentes] = u;
     lu->numeroUtentes ++;
 }
@@ -77,19 +62,39 @@ void listarUtentesPorVacinas(ListaUtentes *lu, ListaVacinas *lv)
     {
         char dataUltimaDose[20];
         printf("===== VACINA %d =====\n", lv->lv[i].idVacina);
-        printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
+        printf("N. UTENTE   |     NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA\n");
         
         for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
         {
             if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
             {
                 sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
-                printf("%s | %d  |  %s  |  %d  |    %s\n", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
+                printf("%d  |%20s | %d  |  %s  |  %d  |    %s\n",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
             }
             
         }
             
     }
+}
+
+void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
+    for (int i = 0; i < lc->numeroCentros; i++) // correr lista de centros
+        {
+            
+            printf("===== Centro %s =====", lc->centros[i].nomeCentro);
+            printf("N. UTENTE  |      NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
+            for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
+            {
+                if (lu->lu[j].centroID == i+1)
+                {
+                    char dataUltimaDose[20];
+                    sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
+                    printf("%d   |   %s | %d  |  %s  |  %d  |    %s",lu->lu[j].numeroDeUtente, lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
+                }
+                
+            }
+            
+        }
 }
 
 void gravarDadosListaUtentes(ListaUtentes lu) 
@@ -112,26 +117,37 @@ void carregarDadosListaUtentes(ListaUtentes *lu)
     fclose(ficheiro);
 }
 
+void vacinarUtente(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc) {
+    int id, centroID, vacinaID, doseVacina;
+    Data dataVacina;
+    printf("Introduza o ID do Utente a ser vacinado: \n");
+    scanf("%d", &id);
+    listarCentros(lc);
+    printf("Indique o ID do centro onde foi vacinado\n");
+    scanf("%d", &centroID);
+    listarVacinas(lv);
+    printf("Indique o ID da vacina administrada\n");
+    scanf("%d", &vacinaID);
+    quantidadeDosesAdmn = 1; //ao criar estamos a assumir que está a receber a primeira dose
+    printf("Indique a data de vacinacao: Ex: 21/01/2020\n");
+    printf("Dia: ");
+    scanf("%d", &dataVacina.dias);
+    printf("Mes: ");
+    scanf("%d", &dataVacina.meses);
+    printf("Ano: ");
+    scanf("%d", &dataVacina.ano);
 
-
-void listarUtentesPorCentro(ListaUtentes *lu, ListaCentros *lc) {
-    for (int i = 0; i < lc->numeroCentros; i++) // correr lista de centros
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        if (lu->lu[i].numeroDeUtente == id)
         {
-            char dataUltimaDose[20];
-            printf("===== Centro %d =====", i+1);
-            printf("NOME   |  IDADE | TELEFONE | DOSES ADMINISTRADAS | DATA ULTIMA DOSE ADMINISTRADA");
-            for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
-            {
-                if (lu->lu[j].centroID == i+1)
-                {
-                    sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
-                    printf("%s | %d  |  %s  |  %d  |    %s", lu->lu[j].nome, lu->lu[j].idade, lu->lu[j].contatoTelefonico, lu->lu[j].quantidadeDosesAdmn ,dataUltimaDose);
-                }
-                
-            }
-            
+            /* code */
         }
+        
+    }
 }
+
+
 
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar) 
 {
@@ -244,9 +260,105 @@ void editarUtente(ListaUtentes *lu, int idAEditar)
         }
 }
 
+int totalVacinasAdministradas (ListaUtentes *lu) {
+    if (lu->numeroUtentes == 0)
+    {
+        return 0;
+    }
+    int totalVacinas = 0;
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        totalVacinas =+ lu->lu[i].quantidadeDosesAdmn;
+    }
+    return totalVacinas;
+}
 
+float mediaIdadesVacinados(ListaUtentes *lu) {
+    if (lu->numeroUtentes == 0)
+    {
+        return 0.0f;
+    }
+    
+    float media;
+    int totalIdade = 0;
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        totalIdade =+ lu->lu[i].idade;
+    }
+    media = totalIdade*1.0/lu->numeroUtentes;
+    return media;
+}
 
+void numeroUtentesVacinadosporVacinas(ListaUtentes *lu, ListaVacinas *lv) {
+    
+    for (int i = 0; i < lv->numeroVacinas; i++) // correr lista vacinas
+    {  
+        int counterUtentes = 0;
+        for (int j = 0; j < lu->numeroUtentes; j++) // correr lista utentes e ver se o vacinaID do utente == i
+        {
+           if (lu->lu[j].vacinaID == lv->lv[i].idVacina)
+           {
+               counterUtentes++;
+               printf("===== VACINA %s | UTENTES VACINADOS: %d=====\n", lv->lv[i].designacao,counterUtentes);
+           }
+           
+            
+        }
+            
+    }
+}
 
+void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv) {
+    int idUtente;
+    int idVacina;
+    int intervaloEntreVacinas;
+    char dataProximaDose[50];
+    printf("Indique o ID do Utente: \n");
+    scanf("%d", &idUtente);
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        if (lu->lu[i].numeroDeUtente == idUtente)
+        {
+            for (int j = 0; j < lv->numeroVacinas; j++)
+            {
+                if (lu->lu[i].vacinaID == lv->lv[j].idVacina)
+                {
+                    intervaloEntreVacinas = lv->lv[j].tempoEntreVacinas;
+                    sprintf(dataProximaDose, "A data da proxima dose e %d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,(lu->lu[i].dataUltimaDosagem.meses + intervaloEntreVacinas), lu->lu[i].dataUltimaDosagem.ano);
+                    puts(dataProximaDose);
+                }
+                
+            }
+        }
+        
+    }
+}
+
+void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv) {
+    int idUtente;
+    int idVacina;
+    int intervaloEntreVacinas;
+    char dataProximaDose[50];
+    printf("Indique o ID do Utente: \n");
+    scanf("%d", &idUtente);
+    for (int i = 0; i < lu->numeroUtentes; i++)
+    {
+        if (lu->lu[i].numeroDeUtente == idUtente)
+        {
+            for (int j = 0; j < lv->numeroVacinas; j++)
+            {
+                if (lu->lu[i].vacinaID == lv->lv[j].idVacina)
+                {
+                    intervaloEntreVacinas = lv->lv[j].tempoEntreVacinas;
+                    sprintf(dataProximaDose, "A data da proxima dose e %d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,(lu->lu[i].dataUltimaDosagem.meses + intervaloEntreVacinas), lu->lu[i].dataUltimaDosagem.ano);
+                    puts(dataProximaDose);
+                }
+                
+            }
+        }
+        
+    }
+}
 
 
 

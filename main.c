@@ -25,19 +25,28 @@ int main(int argc, char const *argv[])
     //CentroVacinacao registos[100]; para que é isto?
     int op1=0;
     int centroID;
+    int vacinasAdministradas = 0;
+    float mediaIdadeUtentesVacinados = 0.0;
 
     while(op1!=9)
     {
+        vacinasAdministradas = totalVacinasAdministradas(&lu);
+        mediaIdadeUtentesVacinados = mediaIdadesVacinados(&lu);
+
+
         printf("************ BEM VINDO!! ************\n\n\n");
+
         printf(">>> DASHBOARD <<<\n\n");
-        printf("NUMERO DE VACINAS ADMNISTRADAS\n");
-        printf("MEDIA DE IDADES DOS UTENTES VACINADOS\n");
-        printf("VACINA (POR VACINA): NUMERO DE UTENTES VACINADOS\n");
-        printf("1 - CENTROS\n\n");
-        printf("2 - UTENTES\n\n");
-        printf("3 - VACINAS\n\n");
-        printf("4 - LISTAR UTENTES POR VACINA\n\n");
-        printf("5 - LISTAR UTENTES POR CENTRO\n\n");
+        printf("NUMERO DE VACINAS ADMNISTRADAS: %d\n", vacinasAdministradas);
+        printf("MEDIA DE IDADES DOS UTENTES VACINADOS: %.2f\n", mediaIdadeUtentesVacinados);
+        numeroUtentesVacinadosporVacinas(&lu, &lv); // lista utentes vacinados por vacinas
+        printf(">>> DASHBOARD <<<\n\n");
+        printf("1 - CENTROS\n");
+        printf("2 - UTENTES\n");
+        printf("3 - VACINAS\n");
+        printf("4 - LISTAR UTENTES POR VACINA\n");
+        printf("5 - LISTAR UTENTES POR CENTRO\n");
+        printf("6 - LISTAR VACINAS ALFABETICAMENTE\n");
         printf("9 - SAIR\n\n");
         printf("OPCAO: ");
 
@@ -64,6 +73,9 @@ int main(int argc, char const *argv[])
             case 5: 
                 listarUtentesPorCentro(&lu, &lc);
                 break;
+            case 6: 
+                listarVacinasAlfabeticamente(lv);
+                break;    
             case 9: 
                 break;
             default:
@@ -123,14 +135,16 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
 {
     int numeroAEditar;
     int op3 = 0;
-    while(op3!=5)
+    while(op3!=9)
         {
             printf(">>> MENU UTENTES <<<\n\n"); 
             printf("1 - Inserir Utente\n"); 
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
             printf("4 - Eliminar Utente\n");            
-            printf("5 - Voltar\n");
+            printf("5 - Listar data da proxima vacina de um utente\n");            
+            printf("6 - Listar utentes a ser vacinados num dia\n");            
+            printf("9 - Voltar\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
             scanf("%d", &op3);
             fflush(stdin);
@@ -154,6 +168,13 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
                     eliminarUtente(lu);
                 break;
                 case 5:
+                    proximaVacinaUtente(lu, lv);
+                break;
+                case 6:
+                    listarUtentesAVacinarNoDia(lu,lv);
+                break;
+
+                case 9:
                 break;
                 default: 
                     printf("Opcao errada\n");
@@ -171,7 +192,7 @@ void menuVacinas(ListaVacinas *lv) {
         printf("1 - Inserir nova vacina\n"); 
         printf("2 - Editar vacina\n");
         printf("3 - Inativar vacina\n");
-        printf("4 - Listar vacinas\n");
+        printf("4 - Listar vacinas por ID\n");
         printf("5 - Sair\n\n");
         printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
 

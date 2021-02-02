@@ -8,11 +8,14 @@ typedef struct sListaUtentes
     int numeroUtentes;
     
 } ListaUtentes;
-
+int totalVacinasAdministradas (ListaUtentes *lu);
+float mediaIdadesVacinados(ListaUtentes *lu);
+void numeroUtentesVacinadosporVacinas(ListaUtentes *lu, ListaVacinas *lv);
 void inserirUtente(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv);
 int procurarIDNaLista(ListaUtentes *lu, int idAProcurar);
 void eliminarUtente(ListaUtentes *lu);
-
+void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv);
+void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv);
 void listarUtentes(ListaUtentes *lu);
 
 void editarUtente(ListaUtentes *lu, int idAEditar);

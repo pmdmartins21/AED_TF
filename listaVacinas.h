@@ -12,7 +12,7 @@ void listarVacinas(ListaVacinas *lv);
 //int procurarVacina(ListaVacinas *lv, int vacinaId);
 void inativarVacina(ListaVacinas *lv, int idAInativar);
 void editarVacinas(ListaVacinas *lv, int idAInativar);
-void listarVacinasAlfabeticamente(ListaVacinas *lv);
+void listarVacinasAlfabeticamente(ListaVacinas lv);
 void editarNomeVacina(ListaVacinas *lv, int idAEditar);
 
 void gravarDadosListaVacinas(ListaVacinas lv);

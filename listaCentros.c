@@ -14,6 +14,7 @@ void inserirCentro(ListaCentros *lc) {
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
 
 void listarCentros(ListaCentros *lc) {
+    printf("======================================");   
     printf(">>>           LISTA DE CENTROS     <<<\n\n");
     printf("ID Centro |           Designacao         \n");
     for (int i = 0; i < lc->numeroCentros; i++) {
@@ -22,6 +23,8 @@ void listarCentros(ListaCentros *lc) {
         strcpy(nome,lc->centros[i].nomeCentro);
         printf("     %d    |%20s   \n",id,nome);
     }
+    printf("======================================\n"); 
+    printf("======================================\n");   
 }
 
 void inactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
