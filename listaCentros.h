@@ -9,7 +9,7 @@ typedef struct sListaCentrosDeVacinacao
 
 void inserirCentro(ListaCentros *lc);
 
-void inactivarCentro(ListaCentros *lc, int IdAInativar);
+void ativarInactivarCentro(ListaCentros *lc, int IdAInativar);
 
 void editarCentro(ListaCentros *lc, int IdAInativar);
 

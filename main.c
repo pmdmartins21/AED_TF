@@ -65,18 +65,21 @@ int main(int argc, char const *argv[])
                 gravarDadosListaUtentes(lu);
                 break;
             case 3: 
-                listarVacinas(&lv);
+                
                 menuVacinas(&lv);
                 gravarDadosListaVacinas(lv);
                 break;
             case 4:
                 listarUtentesPorVacinas(&lu, &lv);
+                while (getchar() != '\n');       
                 break;
             case 5: 
                 listarUtentesPorCentro(&lu, &lc);
+                while (getchar() != '\n'); 
                 break;
             case 6: 
                 listarVacinasAlfabeticamente(lv);
+                while (getchar() != '\n'); 
                 break;    
             case 9: 
                 break;
@@ -96,7 +99,7 @@ void menuCentros(ListaCentros *lc) {
             printf(">>> MENU CENTROS DE VACINACAO <<<\n\n"); 
             printf("1 - Inserir novo Centro \n"); 
             printf("2 - Editar Centro\n");
-            printf("3 - Inativar Centro\n");
+            printf("3 - Ativar/Inativar Centro\n");
             printf("4 - Lista Centros\n\n");
             printf("5 - Sair\n\n");
             printf(">>>     ESCOLHA A OPCAO   <<<\n");
@@ -117,10 +120,11 @@ void menuCentros(ListaCentros *lc) {
                 case 3: 
                     printf("indique o ID do Centro\n");
                     scanf("%d", &idAManipular);
-                    inactivarCentro(lc, idAManipular);
+                    ativarInactivarCentro(lc, idAManipular);
                     break;
                 case 4:
                     listarCentros(lc);
+                    while (getchar() != '\n'); 
                     break;
                 case 5:
                     break;
@@ -148,7 +152,7 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
             printf("6 - Listar data da proxima vacina de um utente\n");            
             printf("7 - Listar utentes a ser vacinados num dia\n");            
             printf("9 - Voltar\n");
-            printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
+            printf(">>>ESCOLHA A OPCAO <<<\n");
             scanf("%d", &op3);
             fflush(stdin);
             switch(op3){
@@ -163,7 +167,8 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
                     break;
                 
                 case 3: 
-                    listarUtentes(lu);
+                    listarUtentes(lu,lv,lc);
+                    while (getchar() != '\n'); 
                     break;
     
                 case 4:
@@ -174,9 +179,11 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
                 break;
                 case 6:
                     proximaVacinaUtente(lu, lv);
+                    while (getchar() != '\n'); 
                 break;
                 case 7:
                     listarUtentesAVacinarNoDia(lu,lv);
+                    while (getchar() != '\n'); 
                 break;
                 case 9:
                 break;
@@ -188,6 +195,7 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
 }
 
 void menuVacinas(ListaVacinas *lv) {
+    listarVacinas(lv);
     int idAInativar;
     int op4 = 0;
     while (op4 != 5)
@@ -195,7 +203,7 @@ void menuVacinas(ListaVacinas *lv) {
         printf(">>> MENU VACINAS <<<\n\n");
         printf("1 - Inserir nova vacina\n"); 
         printf("2 - Editar vacina\n");
-        printf("3 - Inativar vacina\n");
+        printf("3 - Ativar/Inativar vacina\n");
         printf("4 - Listar vacinas por ID\n");
         printf("5 - Sair\n\n");
         printf(">>> ESCOLHA A OPCAO A ALTERAR <<<\n");
@@ -216,16 +224,17 @@ void menuVacinas(ListaVacinas *lv) {
             case 3:
                 printf("Qual o id da vacina a inativar?\n");
                 scanf("%d", &idAInativar);
-                inativarVacina(lv, idAInativar);
+                ativarInativarVacina(lv, idAInativar);
                 break;
             case 4:
                 listarVacinas(lv);
+                while (getchar() != '\n'); 
                 break;
             case 5:
 
                 break;
             default:
-                printf("Opção inválida\n");
+                printf("Opcao invalida\n");
                 break;
         }
     }  

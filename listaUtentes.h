@@ -16,7 +16,7 @@ int procurarIDNaLista(ListaUtentes *lu, int idAProcurar);
 void eliminarUtente(ListaUtentes *lu);
 void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv);
 void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv);
-void listarUtentes(ListaUtentes *lu);
+void listarUtentes(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc);
 void vacinarUtente(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc);
 
 void editarUtente(ListaUtentes *lu, int idAEditar);

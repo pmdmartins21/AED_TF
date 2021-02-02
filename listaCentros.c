@@ -14,8 +14,8 @@ void inserirCentro(ListaCentros *lc) {
 } //***quando inicializar a lista de centros, por o numero de centros a 0!
 
 void listarCentros(ListaCentros *lc) {
-    printf("======================================\n");   
-    printf(">>>           LISTA DE CENTROS     <<<\n\n");
+    printf("=====================================================================================\n");   
+    printf(">>>                            LISTA DE CENTROS                                   <<<\n\n");
     printf("ID Centro |           Designacao      |           MORADA          |  ATIVO/INATIVO   \n");
     for (int i = 0; i < lc->numeroCentros; i++) {
         int id = lc->centros[i].centroID;
@@ -31,16 +31,22 @@ void listarCentros(ListaCentros *lc) {
         strcpy(morada,lc->centros[i].morada);
         printf("     %d    |%27s|%27s|%10s \n",id,nome,morada,ativo);
     }
-    printf("======================================\n"); 
-    printf("======================================\n\n");   
+    printf("=====================================================================================\n");
+    printf("=====================================================================================\n\n");  
 }
 
-void inactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
+void ativarInactivarCentro(ListaCentros *lc, int IdAInativar) { // inativo = 0
     for (int i = 0; i < lc->numeroCentros; i++)
     {
         if (lc->centros[i].centroID == IdAInativar)
         {
-            lc->centros[i].activo = 0;
+           if (lc->centros[i].activo == 1)
+            {
+                lc->centros[i].activo = 0;
+                break;
+            }
+            else
+                lc->centros[i].activo = 1;
         }
     }
 }
@@ -124,13 +130,12 @@ void alterarEstado(ListaCentros *lc, int idAEditar){
 void editarCentro(ListaCentros *lc, int idAEditar) {
     int op6 = 0;
     
-   while(op6!=4) 
+   while(op6!=9) 
         {
             printf(">>> Edicao de Centros de Vacinacao <<<\n\n"); //inserir estado atual com funcao search by id ??
             printf("1 - Nome do Centro \n"); 
             printf("2 - Morada\n");
-            printf("3 - Estado Atual: %s | (So aplicavel para reativar)\n\n",mostrarEstadoAtual(lc, idAEditar) == 1 ? "Activo" : "Inativo"); // mostrar estado atual e permitir alterar?? ja tem opcao para inativar... Opcao valida se inativo?
-            printf("4 - Sair\n\n");
+            printf("9 - Sair\n\n");
             printf(">>>ESCOLHA A OPCAO A ALTERAR<<<\n");
 
             scanf("%d", &op6);
@@ -145,11 +150,7 @@ void editarCentro(ListaCentros *lc, int idAEditar) {
                     alterarMoradaCentro(lc, idAEditar);
                     break;
                 }
-                case 3: {
-                    alterarEstado(lc, idAEditar);
-                    break;
-                }
-                case 4:
+                case 9:
                 break;
                 default: {
                     printf("Opcao errada");
