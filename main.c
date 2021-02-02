@@ -144,7 +144,7 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
     while(op3!=9)
         {
             printf(">>> MENU UTENTES <<<\n\n"); 
-            printf("1 - Novo Utente\n"); 
+            printf("1 - Novo Utente\n"); // Cria na base de dados, sem receber vacina
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
             printf("4 - Eliminar Utente\n");            

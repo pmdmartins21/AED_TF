@@ -167,6 +167,7 @@ void vacinarUtente(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc) {
 
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar) 
 {
+    int counter = 0;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
         if (lu->lu[i].numeroDeUtente == idAEditar)
@@ -178,12 +179,15 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar)
             break;
         }
     }
-    printf("Numero do Utente nao encontrado não encontrado");
+    if (counter == 0)
+    {
+        printf("Numero do Utente nao encontrado não encontrado");
+    }
 }
 
 void alterarContacto(ListaUtentes *lu, int idAEditar) 
 {
-
+    int counter = 0;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
         if (lu->lu[i].numeroDeUtente == idAEditar)
@@ -195,12 +199,16 @@ void alterarContacto(ListaUtentes *lu, int idAEditar)
             break;
         }
     }
-    printf("Numero do Utente nao encontrado não encontrado");
+    if (counter == 0)
+    {
+        printf("Numero do Utente nao encontrado não encontrado");
+    }
 }
 
 void alterarIdadeUtente(ListaUtentes *lu, int idAEditar) 
 {
     int novaIdade;
+    int counter = 0;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
         if (lu->lu[i].numeroDeUtente == idAEditar)
@@ -208,15 +216,22 @@ void alterarIdadeUtente(ListaUtentes *lu, int idAEditar)
             printf("Insira a idade do Utente:\n");
             scanf("%d", &novaIdade);
             lu->lu[i].idade = novaIdade;
-        break;
+            counter++;
+            break;
         }
+    
     }
-    printf("Numero do Utente nao encontrado não encontrado");
+    if (counter == 0)
+    {
+        printf("Numero do Utente nao encontrado não encontrado");
+    }
+    
 }
 
 void alterarNumeroUtente(ListaUtentes *lu, int idAEditar) 
 {
     int novoNumeroUtente;
+    int counter = 0;
     for (int i = 0; i < lu->numeroUtentes; i++)
     {
         if (lu->lu[i].numeroDeUtente == idAEditar)
@@ -227,7 +242,10 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar)
         break;
         }
     }
-    printf("Numero do Utente nao encontrado não encontrado");
+    if (counter == 0)
+    {
+        printf("Numero do Utente nao encontrado não encontrado");
+    }
 }
 
 void editarUtente(ListaUtentes *lu, int idAEditar) 
@@ -308,7 +326,7 @@ float mediaIdadesVacinados(ListaUtentes *lu) {
     }
     if (numeroUtentesVacinados == 0)
     {
-        return 0;
+        return 0.0f;
     }
     
     media = totalIdade*1.0/numeroUtentesVacinados;
@@ -341,18 +359,18 @@ void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv) {
     
     printf("Indique o ID do Utente: \n");
     scanf("%d", &idUtente);
-    for (int i = 0; i < lu->numeroUtentes; i++)
+    for (int i = 0; i < lu->numeroUtentes; i++) // corre lista utentes
     {
-        if (lu->lu[i].numeroDeUtente == idUtente)
+        if (lu->lu[i].numeroDeUtente == idUtente) //encontra utente 
         {
-            for (int j = 0; j < lv->numeroVacinas; j++)
+            for (int j = 0; j < lv->numeroVacinas; j++) // correr lista vacinas
             {
-                if (lu->lu[i].vacinaID == lv->lv[j].idVacina)
+                if (lu->lu[i].vacinaID == lv->lv[j].idVacina) // encontra a vacina
                 {
                     intervaloEntreVacinas = lv->lv[j].tempoEntreVacinas;
-                    dataProximaVacina.dias = lu->lu[i].dataUltimaDosagem.dias;
-                    dataProximaVacina.meses = lu->lu[i].dataUltimaDosagem.meses + intervaloEntreVacinas;
-                    dataProximaVacina.ano = lu->lu[i].dataUltimaDosagem.ano;
+                    dataProximaVacina.dias = lu->lu[i].dataUltimaDosagem.dias; //1
+                    dataProximaVacina.meses = lu->lu[i].dataUltimaDosagem.meses + intervaloEntreVacinas; // pode ultrapassar o mes  + 2
+                    dataProximaVacina.ano = lu->lu[i].dataUltimaDosagem.ano; // 2020
                     if(dataProximaVacina.meses > 12) {
                         
                         dataProximaVacina.meses = (lu->lu[i].dataUltimaDosagem.meses +  intervaloEntreVacinas) - 12;
@@ -371,7 +389,7 @@ void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv) {
 void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv) {
     int idUtente;
     int idVacina;
-    //int intervaloEntreVacinas;
+    int totalAVacinar = 0;
     //char dataProximaDose[50];
     Data dataVacinacaoAVerificaar;
     printf("Indique a Data a verificar: (ex: 21/01/2021)\n");
@@ -393,8 +411,12 @@ void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv) {
             printf(" N.UTENTE |       NOME        |   TELEFONE   | CENTRO VAC. | DATA ULTIMA DOSE\n");
             sprintf(dataUltimaDose, "%d/%d/%d", lu->lu[i].dataUltimaDosagem.dias,lu->lu[i].dataUltimaDosagem.meses, lu->lu[i].dataUltimaDosagem.ano);
             printf(" %d | %18s|  %s   |     %d       | %s\n",lu->lu[i].numeroDeUtente,lu->lu[i].nome,lu->lu[i].contatoTelefonico,lu->lu[i].centroID,dataUltimaDose);
+            totalAVacinar++;
         }
         
+    }
+    if(totalAVacinar == 0) {
+        printf("Ninguem tem de ser vacinado nesse dia!\n\n");
     }
 }
 

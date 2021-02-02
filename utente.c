@@ -10,7 +10,7 @@ Utente criarUtente()
     u.nome[strlen(u.nome) -1 ] = '\0';
     printf("Idade do utente:\n");
     scanf("%d", &u.idade);
-    printf("Insira o Numero de Utente (CC):\n");
+    printf("Insira o Numero de Utente (CC):\n"); // assumimos que cada utente tem um ID proprio = numero CC
     scanf("%d", &u.numeroDeUtente);
     fflush(stdin);
     printf("Contato Telefonico:\n");
