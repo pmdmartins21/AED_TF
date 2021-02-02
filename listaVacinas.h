@@ -15,6 +15,6 @@ void editarVacinas(ListaVacinas *lv, int idAInativar);
 void listarVacinasAlfabeticamente(ListaVacinas lv);
 void editarNomeVacina(ListaVacinas *lv, int idAEditar);
 int procurarIDNaListaVacinas(ListaVacinas *lv, int idAProcurar);
-
+void editarIdVacina(ListaVacinas *lv, int idAEditar);
 void gravarDadosListaVacinas(ListaVacinas lv);
 void carregarDadosListaVacinas(ListaVacinas *lv);

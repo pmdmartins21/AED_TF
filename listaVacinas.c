@@ -77,7 +77,7 @@ void carregarDadosListaVacinas(ListaVacinas *lv){
 }
 
 void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
-
+    int counter = 0;
     for (int i = 0; i < lv->numeroVacinas; i++)
     {
         if (lv->lv[i].idVacina == idAEditar)
@@ -87,13 +87,17 @@ void editarNomeVacina(ListaVacinas *lv, int idAEditar) {
             fgets(lv->lv[i].designacao, 101, stdin);
             lv->lv[i].designacao[strlen(lv->lv[i].designacao) -1 ] = '\0';
             break;
+            counter ++;
         }   
     }
-    printf("ID não encontrado");
+    if (counter == 0)
+    {
+        printf("ID nao encontrado");
+    }
 }
 //nao vamos usar
 void editarIdVacina(ListaVacinas *lv, int idAEditar) {
-    int novoID;
+    int novoID, counter = 0;
     for (int i = 0; i < lv->numeroVacinas; i++)
     {
         if (lv->lv[i].idVacina == idAEditar)
@@ -102,13 +106,17 @@ void editarIdVacina(ListaVacinas *lv, int idAEditar) {
             scanf("%d", &novoID);
             lv->lv[i].idVacina = novoID;
             break;
+            counter++;
         } 
     }
-    printf("ID não encontrado");
+    if (counter == 0)
+    {
+        printf("ID nao encontrado");
+    }
 }
 
 void editarNumeroDosesVacina(ListaVacinas *lv, int idAEditar) {
-    int novoNumeroDoses;
+    int novoNumeroDoses, counter = 0;
     for (int i = 0; i < lv->numeroVacinas; i++)
     {
         if (lv->lv[i].idVacina == idAEditar)
@@ -117,13 +125,17 @@ void editarNumeroDosesVacina(ListaVacinas *lv, int idAEditar) {
             scanf("%d", &novoNumeroDoses);
             lv->lv[i].nDoses = novoNumeroDoses;
         break;
+        counter++;
         } 
     }
-    printf("ID não encontrado");
+    if (counter == 0)
+    {
+        printf("ID nao encontrado");
+    }
 }
 
 void editarTempoEntreVacina(ListaVacinas *lv, int idAEditar) {
-    int novoTempoEntreVacinas;
+    int novoTempoEntreVacinas, counter = 0;
     for (int i = 0; i < lv->numeroVacinas; i++)
     {
         if (lv->lv[i].idVacina == idAEditar)
@@ -132,9 +144,13 @@ void editarTempoEntreVacina(ListaVacinas *lv, int idAEditar) {
             scanf("%d", &novoTempoEntreVacinas);
             lv->lv[i].idVacina = novoTempoEntreVacinas;
             break;
+            counter++;
         } 
     }
-    printf("ID não encontrado");
+    if (counter == 0)
+    {
+        printf("ID nao encontrado");
+    }
 }
 
 void listarVacinasAlfabeticamente(ListaVacinas lv) {

@@ -84,6 +84,7 @@ void carregarDadosListaCentros(ListaCentros *lc)
 
 
 void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
+    int counter = 0;
     for (int i = 0; i < lc->numeroCentros; i++)
     {
         if (lc->centros[i].centroID == idAEditar)
@@ -95,7 +96,10 @@ void alterarNomeCentro(ListaCentros *lc,int idAEditar) {
             break;
         }                
     }
-    printf("ID nao encontrado\n"); 
+    if (counter == 0)
+    {
+        printf("Numero do Centro nao encontrado não encontrado");
+    }
 }
 
 void alterarMoradaCentro(ListaCentros *lc, int idAEditar) {
@@ -107,13 +111,6 @@ void alterarMoradaCentro(ListaCentros *lc, int idAEditar) {
     lc->centros[indiceID].morada[strlen(lc->centros[indiceID].morada) -1 ] = '\0';
 }
 
-void alterarIdCentro(ListaCentros *lc, int idAEditar){ // impossibilitar?
-    int novoIndice;
-    int indiceID = procurarIDNaListaCentros(lc, idAEditar);
-    printf("Insira o novo ID de Centro:\n");
-    scanf("%d", novoIndice);
-    lc->centros[indiceID].centroID = novoIndice;
-}
 
 int mostrarEstadoAtual(ListaCentros *lc, int idAEditar) {
      int indiceID = procurarIDNaListaCentros(lc, idAEditar);

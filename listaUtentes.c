@@ -177,6 +177,7 @@ void alterarNomeUtente(ListaUtentes *lu, int idAEditar)
             fgets(lu->lu[i].nome, 101, stdin);
             lu->lu[i].nome[strlen(lu->lu[i].nome) -1 ] = '\0';
             break;
+            counter ++;
         }
     }
     if (counter == 0)
@@ -197,6 +198,7 @@ void alterarContacto(ListaUtentes *lu, int idAEditar)
             fgets(lu->lu[i].contatoTelefonico, 101, stdin);
             lu->lu[i].contatoTelefonico[strlen(lu->lu[i].contatoTelefonico) -1 ] = '\0';
             break;
+            counter ++;
         }
     }
     if (counter == 0)
@@ -240,6 +242,7 @@ void alterarNumeroUtente(ListaUtentes *lu, int idAEditar)
             scanf("%d", &novoNumeroUtente);
             lu->lu[i].numeroDeUtente = novoNumeroUtente;
         break;
+        counter ++;
         }
     }
     if (counter == 0)
@@ -326,7 +329,7 @@ float mediaIdadesVacinados(ListaUtentes *lu) {
     }
     if (numeroUtentesVacinados == 0)
     {
-        return 0.0f;
+        return 0;
     }
     
     media = totalIdade*1.0/numeroUtentesVacinados;

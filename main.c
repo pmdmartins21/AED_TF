@@ -144,7 +144,7 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
     while(op3!=9)
         {
             printf(">>> MENU UTENTES <<<\n\n"); 
-            printf("1 - Novo Utente\n"); // Cria na base de dados, sem receber vacina
+            printf("1 - Novo Utente\n"); // Cria na base de dados, sem receber
             printf("2 - Editar Utente\n");
             printf("3 - Listar Utente\n");
             printf("4 - Eliminar Utente\n");            
@@ -196,7 +196,7 @@ void menuUtentes(ListaUtentes *lu, ListaCentros *lc, ListaVacinas *lv)
 
 void menuVacinas(ListaVacinas *lv) {
     listarVacinas(lv);
-    int idAInativar;
+    int idAAlterar;
     int op4 = 0;
     while (op4 != 5)
     {
@@ -218,20 +218,19 @@ void menuVacinas(ListaVacinas *lv) {
                 break;
             case 2:
                 printf("Qual o id da vacina a editar?\n");
-                scanf("%d", &idAInativar);
-                editarVacinas(lv, idAInativar);
+                scanf("%d", &idAAlterar);
+                editarVacinas(lv, idAAlterar);
                 break;
             case 3:
                 printf("Qual o id da vacina a inativar?\n");
-                scanf("%d", &idAInativar);
-                ativarInativarVacina(lv, idAInativar);
+                scanf("%d", &idAAlterar);
+                ativarInativarVacina(lv, idAAlterar);
                 break;
             case 4:
                 listarVacinas(lv);
                 while (getchar() != '\n'); 
                 break;
             case 5:
-
                 break;
             default:
                 printf("Opcao invalida\n");
