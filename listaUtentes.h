@@ -17,6 +17,7 @@ void eliminarUtente(ListaUtentes *lu);
 void proximaVacinaUtente(ListaUtentes *lu, ListaVacinas *lv);
 void listarUtentesAVacinarNoDia(ListaUtentes *lu, ListaVacinas *lv);
 void listarUtentes(ListaUtentes *lu);
+void vacinarUtente(ListaUtentes *lu, ListaVacinas *lv, ListaCentros *lc);
 
 void editarUtente(ListaUtentes *lu, int idAEditar);
 void alterarNomeUtente(ListaUtentes *lu, int idAEditar);
